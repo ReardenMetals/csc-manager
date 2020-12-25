@@ -1,6 +1,6 @@
 from sys import argv, exit
 from pybitcoin import BitcoinPrivateKey, LitecoinPrivateKey
-import pywaves as pw
+# import pywaves as pw
 from cashaddress import convert
 
 # for ethereum wallets
