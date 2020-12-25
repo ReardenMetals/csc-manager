@@ -6,4 +6,4 @@ Install needed dependencies:
 
 Run the script:
 
-    python2.7 ./script.py 10 ./output/test.csv BTC  
+    python2.7 script.py 10 output/ BTC  
