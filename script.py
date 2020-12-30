@@ -7,6 +7,7 @@ from cashaddress import convert
 from ecdsa import SigningKey, SECP256k1
 import sha3
 import codecs
+import json
 
 
 # for monero wallet
@@ -216,13 +217,15 @@ def savePublicKeys(coin, coin_list = [], filename ='public.txt'):
         print "Done!"
 
 def init():
+    with open('config.json') as json_file:
+        config_json = json.load(json_file)
+        base_file_name = config_json['base_file_name']
+        asset_id_file_name = config_json['asset_id_file_name']
+        private_file_name = config_json['private_file_name']
+        public_file_name = config_json['public_file_name']
+        serial_file_name = config_json['serial_file_name']
     max_iterator_count = 10
 
-    assets_file = 'assetid.txt'
-    private_keys_file = 'private.txt'
-    public_keys_file = 'public.txt'
-
-    out_file_name = 'address.csv'
     coin = 'BTC'
 
     output_directory = './'
@@ -251,18 +254,18 @@ def init():
         'POTE': GeneratePOTE,
     }
     coins = list(options.keys())
-    filename = "{}".format(output_directory + out_file_name)
+
     if coin in options:
-        print "Number of address: {} \nOutput:  {}\nCoin: {} ".format(max_iterator_count, filename, coin)
+        print "Number of address: {} \nOutput:  {}\nCoin: {} ".format(max_iterator_count, base_file_name, coin)
         coin_list = []
         if (max_iterator_count > 0):
             for i in range(max_iterator_count):
                 coin_item = options[coin]()
                 coin_list.append(coin_item)
-            saveCoinsList(coin, coin_list, filename)
-            saveAssetIds(coin, coin_list, output_directory + assets_file)
-            savePrivateKeys(coin, coin_list, output_directory + private_keys_file)
-            savePublicKeys(coin, coin_list, output_directory + public_keys_file)
+            saveCoinsList(coin, coin_list, base_file_name)
+            saveAssetIds(coin, coin_list, asset_id_file_name)
+            savePrivateKeys(coin, coin_list, private_file_name)
+            savePublicKeys(coin, coin_list, public_file_name)
         else:
             print "Iterator count should be > 0"
     else:
