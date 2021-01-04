@@ -1,31 +1,29 @@
 import json
+import shutil
+import os
 
 
 # saving for backup
-def copyFile(filename, filename_temp):
-    with open(filename, 'r') as file:
-        data = file.read()
-    with open(filename_temp, 'w') as filetemp:
-        filetemp.write(data)
-    filetemp.close()
-    file.close()
-    print "Make copy {}. Done!".format(filetemp.name)
+def copy_file(old_file):
+    new_file = old_file+"tmp"
+    shutil.copy(old_file, new_file)
+    print "Make copy {}. Done!".format(new_file)
 
 
-def getCoinPositionByIdInFile(filename, good_coin_id):
+def get_coin_position(filename, good_coin):
     with open(filename, 'r') as file:
         coin_list_id = file.read().splitlines()
-        coin_id = coin_list_id.index(good_coin_id)
+        coin_id = coin_list_id.index(good_coin)
         file.close()
     return coin_id
 
 
-def removeLinesInFile(filename, good_coin_pos, ignore_header = False):
+def remove_lines_in_file(filename, good_coin_pos):
     with open(filename, 'r+') as file:
         coin_list = file.read().splitlines()
     file.close()
     for i in range(good_coin_pos + 1):
-            if (coin_list[0] != 'WIF,Address,Seed'):#fixme
+            if (os.path.basename(filename) != "address.csv"):
                 coin_list.pop(0)
             else:
                 coin_list.pop(1)
@@ -37,39 +35,16 @@ def removeLinesInFile(filename, good_coin_pos, ignore_header = False):
 
 
 def main():
+
     with open('config.json') as json_file:
         config_json = json.load(json_file)
-    # print  config_json.items()
-    # print  config_json.keys()[0]
+        good_coin = raw_input("Enter the last good coin id : ")
+        good_coin_pos = get_coin_position(config_json.values()[0], good_coin)
 
-        base_file_name = config_json['base_file_name']
-        asset_id_file_name = config_json['asset_id_file_name']
-        private_file_name = config_json['private_file_name']
-        public_file_name = config_json['public_file_name']
-        serial_file_name = config_json['serial_file_name']
-        sequence_file_name = config_json['sequence_file_name']
-        # rebase_file_name = config_json['rebase_file_name']
-        # reasset_id_file_name = config_json['reasset_id_file_name']
-        # reprivate_file_name = config_json['reprivate_file_name']
-        # republic_file_name = config_json['republic_file_name']
-        # reserial_file_name = config_json['reserial_file_name']
-        # resequence_file_name = config_json['resequence_file_name']
+        for file_name in config_json.keys():
+            copy_file(config_json[file_name])
+            remove_lines_in_file(config_json[file_name],good_coin_pos)
 
-    good_coin_pos = raw_input("Enter the last good coin id : ")
-    good_coin = getCoinPositionByIdInFile(sequence_file_name, good_coin_pos)
-    print  good_coin
-
-    copyFile(base_file_name, rebase_file_name)
-    copyFile(asset_id_file_name, reasset_id_file_name)
-    copyFile(private_file_name, reprivate_file_name)
-    copyFile(public_file_name, republic_file_name)
-    copyFile(sequence_file_name, resequence_file_name)
-
-    removeLinesInFile(base_file_name, good_coin)
-    removeLinesInFile(asset_id_file_name,good_coin)
-    removeLinesInFile(private_file_name,good_coin)
-    removeLinesInFile(public_file_name,good_coin)
-    removeLinesInFile(sequence_file_name,good_coin)
 
 
 if __name__ == "__main__":
