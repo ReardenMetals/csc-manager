@@ -3,7 +3,7 @@ from pybitcoin import BitcoinPrivateKey, LitecoinPrivateKey
 # import pywaves as pw
 from cashaddress import convert
 
-# for ethereum wallets
+#for ethereum wallets
 from ecdsa import SigningKey, SECP256k1
 import sha3
 import codecs
@@ -11,7 +11,7 @@ import json
 
 
 # for monero wallet
-# from moneropy import account
+from moneropy import account
 
 class DashPublicKey(BitcoinPrivateKey):
     _pubkeyhash_version_byte = 0x4c
@@ -144,10 +144,16 @@ def FormatETH(coin):
 
 
 # TODO Add this coins
-# def GenerateXMR():
-#     seed, sk, vk, addr = account.gen_new_wallet()
-#     line = "{},{},{},{}\n".format(addr,vk,sk,seed)
-#     return line
+def GenerateXMR():
+    seed, sk, vk, addr = account.gen_new_wallet()
+    # line = "{},{},{},{}\n".format(addr,vk,sk,seed)
+    coin = CryptoCoin(addr, sk, seed)
+    return coin
+
+
+def FormatXMR(coin):
+    line = "{},{}\n".format(coin.wif, coin.address)
+    return line
 #
 # def GenerateWaves():
 #     addr = pw.Address()
@@ -170,7 +176,7 @@ def saveCoinsList(coin, coin_list=[], filename='address.csv'):
         "DASH": FormatDASH,
         'CLUB': FormatCLUB,
         'ETH': FormatETH,
-        # 'XMR':FormatXMR, #TODO
+        'XMR': FormatXMR,
         # 'WAVES': FormatWaves, #TODO
         'POTE': FormatPOTE,
     }
@@ -210,7 +216,7 @@ def GenerateAssetId(coin):
         "LTC": GenerateAssetIdFromDefault,
         "DASH": GenerateAssetIdFromDefault,
         'CLUB': GenerateAssetIdFromDefault,
-        # 'XMR': GenerateAssetIdFromDefault,
+        'XMR': GenerateAssetIdFromDefault,
         # 'WAVES': GenerateAssetIdFromDefault,
         'POTE': GenerateAssetIdFromDefault,
     }
@@ -273,27 +279,11 @@ def init():
         asset_id_file_name = config_json['asset_id_file_name']
         private_file_name = config_json['private_file_name']
         public_file_name = config_json['public_file_name']
-        serial_file_name = config_json['serial_file_name']
         sequence_file_name = config_json['sequence_file_name']
 
-    max_iterator_count = 10
-    coin = 'BTC'
-    lazer_type = 'A'
     max_iterator_count = int(default_input("How many codes you want? ","10"))
     coin = default_input("What crypto you making (BTC, ETH,)? ","BTC").upper()
     lazer_type = default_input("What laser is this (A, B, C)? ", "A").upper()
-
-    if len(argv) >= 4:
-        max_iterator_count = toNumber(argv[1])
-
-        coin = argv[3]
-    else:
-        print "Script will run with default configuration"
-
-    coin = coin.upper()
-
-    if max_iterator_count is None:
-        exit(0)
 
     options = {
         "BTC": GenerateBTC,
@@ -302,7 +292,7 @@ def init():
         "DASH": GenerateDASH,
         'CLUB': GenerateCLUB,
         'ETH': GenerateETH,
-        # 'XMR':GenerateXMR,
+        'XMR': GenerateXMR,
         # 'WAVES': GenerateWaves,
         'POTE': GeneratePOTE,
     }
