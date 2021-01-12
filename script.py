@@ -1,6 +1,6 @@
 from sys import argv, exit
 from pybitcoin import BitcoinPrivateKey, LitecoinPrivateKey
-# import pywaves as pw
+import pywaves as pw
 from cashaddress import convert
 
 #for ethereum wallets
@@ -154,11 +154,18 @@ def GenerateXMR():
 def FormatXMR(coin):
     line = "{},{}\n".format(coin.wif, coin.address)
     return line
-#
-# def GenerateWaves():
-#     addr = pw.Address()
-#     line = "{},{},{},{}\n".format(addr.address, addr.publicKey, addr.privateKey, addr.seed)
-#     return line
+
+def GenerateWaves():
+    pw.setOffline()
+    addr = pw.Address()
+    # line = "{},{},{},{}\n".format(addr.address, addr.publicKey, addr.privateKey, addr.seed)
+    coin = CryptoCoin(addr.address, addr.privateKey, addr.seed)
+    # return line
+    return coin
+
+def FormatWaves(coin):
+    line = "{},{}\n".format(coin.wif, coin.address)
+    return line
 
 def toNumber(input):
     try:
@@ -177,7 +184,7 @@ def saveCoinsList(coin, coin_list=[], filename='address.csv'):
         'CLUB': FormatCLUB,
         'ETH': FormatETH,
         'XMR': FormatXMR,
-        # 'WAVES': FormatWaves, #TODO
+        'WAVES': FormatWaves,
         'POTE': FormatPOTE,
     }
 
@@ -217,7 +224,7 @@ def GenerateAssetId(coin):
         "DASH": GenerateAssetIdFromDefault,
         'CLUB': GenerateAssetIdFromDefault,
         'XMR': GenerateAssetIdFromDefault,
-        # 'WAVES': GenerateAssetIdFromDefault,
+        'WAVES': GenerateAssetIdFromDefault,
         'POTE': GenerateAssetIdFromDefault,
     }
     return options[coin]
@@ -293,7 +300,7 @@ def init():
         'CLUB': GenerateCLUB,
         'ETH': GenerateETH,
         'XMR': GenerateXMR,
-        # 'WAVES': GenerateWaves,
+        'WAVES': GenerateWaves,
         'POTE': GeneratePOTE,
     }
     coins = list(options.keys())
