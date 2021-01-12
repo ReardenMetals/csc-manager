@@ -317,6 +317,7 @@ def init():
             savePrivateKeys(coin, coin_list, private_file_name)
             savePublicKeys(coin, coin_list, public_file_name)
             saveSequenseCoinId(lazer_type,coin_list, sequence_file_name)
+            print "Success"
         else:
             print "Iterator count should be > 0"
     else:
