@@ -19,6 +19,7 @@ class DashPublicKey(BitcoinPrivateKey):
 
 class ClubCoinPublicKey(BitcoinPrivateKey):
     _pubkeyhash_version_byte = 0x1c
+    _wif_version_byte = 0x99
 
 
 class PotCoinPublicKey(BitcoinPrivateKey):
@@ -39,6 +40,9 @@ class CryptoCoin:
         return "address='{}', wif='{}', seed='{}'".format(self.address, self.wif, self.seed)
 
 
+
+
+
 def GenerateBTC():
     private_key = BitcoinPrivateKey.from_passphrase()
     wif = private_key.to_wif()
@@ -55,13 +59,17 @@ def FormatBTC(coin):
 
 
 def GenerateBCH():
-    private_key = BitcoinPrivateKey.from_passphrase()
-    # seed = private_key.passphrase()
-    # private_key._compressed = True
-    wif = private_key.to_wif()
-    address = convert.to_cash_address(private_key.public_key().address())
-    coin = CryptoCoin(address.replace('bitcoincash:', ''), wif)
-    return coin
+    return GenerateBTC()
+
+
+# def oldGenerateBCH():
+#     private_key = BitcoinPrivateKey.from_passphrase()
+#     # seed = private_key.passphrase()
+#     # private_key._compressed = True
+#     wif = private_key.to_wif()
+#     address = convert.to_cash_address(private_key.public_key().address())
+#     coin = CryptoCoin(address.replace('bitcoincash:', ''), wif)
+#     return coin
 
 
 def FormatBCH(coin):
