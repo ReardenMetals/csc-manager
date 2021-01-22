@@ -83,3 +83,22 @@ For a Rob:
     - 5) Copy the file distutils.cfg and paste it in C:\python27\Lib\distutils
     - 6) Open a new instance of Command prompt: open folder python-axolotl-curve25519-master and run command python setup.py install
     - 7) Then open folder python-axolotl-master and run command python setup.py install
+
+For a developer:
+    
+    install project:
+    - 1) Install python-2.7.18.msi(when installing add python.exe to Path) and VCForPython27.msi
+    - 2) Copy the file stdint.h and paste it in C:\Users\Administrator\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\
+    - 3) Install mingw-get-setup.exe
+    - 4) Add C:\MinGW\bin to environment varaibles
+    - 5) Create a new file named distutils.cfg, put this new file in the Lib/distutils folder of your python installation e.g C:\python27\Lib\distutils
+        inside this file add these 2 lines and save:
+            [build]
+            compiler=mingw32
+    - 6) Open a new instance of Command prompt and run this commands: mingw-get.exe install gcc
+    - 7) run this commands: mingw-get.exe install zlib
+    - 8) Open project in PyCharm
+    - 9) in terminal run commands:open folder python-axolotl-curve25519-master and run command python setup.py install,
+        then open folder python-axolotl-master and run command python setup.py install
+    - 11) in terminal run commands: pip install --target ./package pybitcoin PyWaves==0.8.15 cashaddress ecdsa pysha3
+    pip install ph4-moneropy
