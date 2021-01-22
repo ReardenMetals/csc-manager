@@ -50,25 +50,36 @@ script-v4a.py  (LIVE VERSION)
 
 Dependencies version needed:
 
-    base58==0.2.5
-    bitcoin==1.1.42
-    bitmerchant==0.1.8
-    cachetools==2.1.0
-    certifi==2018.4.16
-    chardet==3.0.4
-    commontools==0.1.0
-    ecdsa==0.13
-    idna==2.7
-    keychain==0.14.2.0
-    keylib==0.1.1
-    pkg-resources==0.0.0
-    pybitcoin==0.9.9
-    pyblake2==1.1.2
-    python-axolotl-curve25519==0.4.1.post2
-    python-bitcoinrpc==0.1
-    PyWaves==0.8.15
-    requests==2.19.1
-    sha3==0.2.1
-    six==1.11.0
-    urllib3==1.23
-    utilitybelt==0.2.6
+    base58==0.2.5 +
+    bitcoin==1.1.42 +
+    bitmerchant==0.1.8 +
+    cachetools==2.1.0 down
+    certifi==2018.4.16 down
+    chardet==3.0.4 down
+    commontools==0.1.0 +
+    ecdsa==0.13 down
+    idna==2.7 down
+    keychain==0.14.2.0 +
+    keylib==0.1.1 +
+    pkg-resources==0.0.0 ?
+    pybitcoin==0.9.9 +
+    pyblake2==1.1.2 +
+    python-axolotl-curve25519==0.4.1.post2 +
+    python-bitcoinrpc==0.1+
+    PyWaves==0.8.15 +
+    requests==2.19.1 down
+    sha3==0.2.1 ?
+    six==1.11.0 down
+    urllib3==1.23 down
+    utilitybelt==0.2.6 +
+
+For a Rob:
+
+    install pywaves:
+    - 1) Install python-2.7.18.msi(when installing add python.exe to Path) and VCForPython27.msi
+    - 2) Copy the file stdint.h and paste it in C:\Users\laser\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\
+    - 3) Copy folder MinGW in C:\
+    - 4) Add C:\MinGW\bin to environment varaibles
+    - 5) Copy the file distutils.cfg and paste it in C:\python27\Lib\distutils
+    - 6) Open a new instance of Command prompt: open folder python-axolotl-curve25519-master and run command python setup.py install
+    - 7) Then open folder python-axolotl-master and run command python setup.py install
