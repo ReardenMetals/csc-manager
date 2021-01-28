@@ -2,6 +2,7 @@ from crypto_coin import CryptoCoin
 from crypto_keygen_service import CryptoKeygenService
 from pybitcoin import BitcoinPrivateKey
 
+
 class BtcCryptoKeygenService(CryptoKeygenService):
 
     def generate(self):
