@@ -9,3 +9,5 @@ class WavesCryptoKeygenService(CryptoKeygenService):
         addr = pw.Address()
         return CryptoCoin(addr.address, addr.privateKey, addr.seed)
 
+    def get_csv_header(self):
+        return "Address,Public Key,Private Key,Seed\n"

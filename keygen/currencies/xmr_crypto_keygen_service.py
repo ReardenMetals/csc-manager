@@ -10,3 +10,5 @@ class XmrCryptoKeygenService(CryptoKeygenService):
         # line = "{},{},{},{}\n".format(addr,vk,sk,seed)
         return CryptoCoin(addr, sk, seed)
 
+    def get_csv_header(self):
+        return "Address,Secret View Key,Secret Spend Key,Secret Mnemonic\n"

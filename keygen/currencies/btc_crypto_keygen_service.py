@@ -11,3 +11,9 @@ class BtcCryptoKeygenService(CryptoKeygenService):
         seed = private_key.passphrase()
         address = private_key.public_key().address()
         return CryptoCoin(address, wif, seed)
+
+    def format(self, coin):
+        return "{},{},{}\n".format(coin.wif, coin.address, coin.seed)
+
+    def get_csv_header(self):
+        return "WIF,Address,Seed\n"

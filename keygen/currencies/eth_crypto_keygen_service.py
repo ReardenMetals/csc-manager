@@ -16,3 +16,7 @@ class EthCryptoKeygenService(CryptoKeygenService):
         address = keccak.hexdigest()[24:]
         priv_hex = codecs.encode(priv.to_string(), 'hex')
         return CryptoCoin("0x{}".format(address), priv_hex)
+
+    def generate_asset_id(self, coin):
+        coin_address = coin.address
+        return coin_address[2:8]
