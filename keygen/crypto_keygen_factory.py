@@ -5,8 +5,13 @@ from keygen.currencies.dash_crypto_keygen_service import DashCryptoKeygenService
 from keygen.currencies.eth_crypto_keygen_service import EthCryptoKeygenService
 from keygen.currencies.ltc_crypto_keygen_service import LtcCryptoKeygenService
 from keygen.currencies.pote_crypto_keygen_service import PoteCryptoKeygenService
+from keygen.currencies.usdt_crypto_keygen_service import UsdtCryptoKeygenService
 from keygen.currencies.waves_crypto_keygen_service import WavesCryptoKeygenService
 from keygen.currencies.xmr_crypto_keygen_service import XmrCryptoKeygenService
+from keygen.currencies.bnb_crypto_keygen_service import BnbCryptoKeygenService
+from keygen.currencies.eos_crypto_keygen_service import EosCryptoKeygenService
+
+
 
 
 class CryptoKeygenFactory:
@@ -33,3 +38,10 @@ class CryptoKeygenFactory:
             return WavesCryptoKeygenService()
         if currency == "POTE":
             return PoteCryptoKeygenService()
+        if currency == "USDT":
+            return UsdtCryptoKeygenService()
+        if currency == "BNB":
+            return BnbCryptoKeygenService()
+        if currency == "EOS":
+            return EosCryptoKeygenService()
+        raise Exception("Coin not supported")
