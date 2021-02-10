@@ -1,0 +1,14 @@
+{
+  "base_file_name": "C:\\Users\\laser\\Desktop\\address.csv",
+  "asset_id_file_name": "C:\\Users\\laser\\Desktop\\asset_id.txt",
+  "private_file_name": "C:\\Users\\laser\\Desktop\\private.txt",
+  "public_file_name": "C:\\Users\\laser\\Desktop\\public.txt",
+  "sequence_file_name": "C:\\Users\\laser\\Desktop\\sequence.txt",
+
+  "venv_usdt": "venv36\\Scripts\\python.exe",
+  "venv_bnb": "venv36\\Scripts\\python.exe",
+  "venv_eos": "venv38\\Scripts\\python.exe",
+  "usd_external_script": "keygen\\external\\usd_generate_36.py",
+  "bnb_external_script": "keygen\\external\\bnb_generate_36.py",
+  "eos_external_script": "keygen\\external\\eos_generate_38.py"
+}

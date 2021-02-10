@@ -2,6 +2,7 @@ from keygen.currencies.bch_crypto_keygen_service import BchCryptoKeygenService
 from keygen.currencies.btc_crypto_keygen_service import BtcCryptoKeygenService
 from keygen.currencies.club_crypto_keygen_service import ClubCryptoKeygenService
 from keygen.currencies.dash_crypto_keygen_service import DashCryptoKeygenService
+from keygen.currencies.doge_crypto_keygen_service import DogeCryptoKeygenService
 from keygen.currencies.eth_crypto_keygen_service import EthCryptoKeygenService
 from keygen.currencies.ltc_crypto_keygen_service import LtcCryptoKeygenService
 from keygen.currencies.pote_crypto_keygen_service import PoteCryptoKeygenService
@@ -44,4 +45,6 @@ class CryptoKeygenFactory:
             return BnbCryptoKeygenService()
         if currency == "EOS":
             return EosCryptoKeygenService()
+        if currency == "DOGE":
+            return DogeCryptoKeygenService()
         raise Exception("Coin not supported")
