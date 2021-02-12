@@ -61,9 +61,9 @@ def saveSequenseCoinId(lazer_type, coin_list=[], filename='sequence.txt'):
 
 def default_input(message, defaultVal):
     if defaultVal:
-        return raw_input("%s [%s] : " % (message, defaultVal)) or defaultVal
+        return input("%s [%s] : " % (message, defaultVal)) or defaultVal
     else:
-        return raw_input("%s " % (message))
+        return input("%s " % (message))
 
 
 def init():
@@ -91,9 +91,9 @@ def init():
             savePublicKeys(crypto_keygen_service, coin_list, public_file_name)
             saveSequenseCoinId(lazer_type, coin_list, sequence_file_name)
         else:
-            print "Iterator count should be > 0"
+            print("Iterator count should be > 0")
     except Exception as e:
-        print e
+        print(e)
         # print "{} is not supported yet".format(coin)
         # print "Usage python script.py <number_of_wallets> <file_name.csv> <coin>"
         # print "Usage python script.py 10 wallets.csv BTC"

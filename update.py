@@ -7,7 +7,7 @@ import os
 def copy_file(old_file):
     new_file = old_file + "tmp"
     shutil.copy(old_file, new_file)
-    print "Make copy {}. Done!".format(new_file)
+    print("Make copy {}. Done!".format(new_file))
 
 
 def get_coin_position(filename, good_coin):
@@ -37,7 +37,7 @@ def remove_lines_in_file(filename, good_coin_pos):
 def main():
     with open('config.json') as json_file:
         config_json = json.load(json_file)
-        good_coin = raw_input("Enter the last good coin id : ")
+        good_coin = input("Enter the last good coin id : ")
 
         config_files = [
             config_json['sequence_file_name'],

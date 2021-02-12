@@ -13,5 +13,6 @@ class ClubCryptoKeygenService(CryptoKeygenService):
         # private_key._compressed = True
         wif = private_key.to_wif()
         address = private_key.public_key().address()
-        return CryptoCoin(address, wif)
+        seed = private_key.passphrase()
+        return CryptoCoin(address, wif, seed)
 
