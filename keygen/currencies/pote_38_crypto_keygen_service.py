@@ -4,7 +4,7 @@ import json
 import subprocess
 
 
-class NewPoteCryptoKeygenService(CryptoKeygenService):
+class Pote38CryptoKeygenService(CryptoKeygenService):
 
     def generate(self):
         return self.generateList(1)[0]

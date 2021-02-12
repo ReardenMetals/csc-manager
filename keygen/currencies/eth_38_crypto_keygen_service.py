@@ -6,7 +6,7 @@ from ecdsa import SigningKey, SECP256k1
 import sha3
 import codecs
 
-class NewEthCryptoKeygenService(CryptoKeygenService):
+class Eth38CryptoKeygenService(CryptoKeygenService):
 
     def generate(self):
         keccak = sha3.keccak_256()

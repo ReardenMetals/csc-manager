@@ -4,7 +4,7 @@ from keygen.crypto_keygen_service import CryptoKeygenService
 from aioeos.keys import EosKey
 
 
-class NewEosCryptoKeygenService(CryptoKeygenService):
+class Eos38CryptoKeygenService(CryptoKeygenService):
 
     def generate(self):
         eos = EosKey()

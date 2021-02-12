@@ -11,19 +11,19 @@
 # from keygen.currencies.xmr_crypto_keygen_service import XmrCryptoKeygenService
 # from keygen.currencies.bnb_crypto_keygen_service import BnbCryptoKeygenService
 # from keygen.currencies.eos_crypto_keygen_service import EosCryptoKeygenService
-from keygen.currencies.bnb_38_crypto_keygen_service import NewBnbCryptoKeygenService
-from keygen.currencies.btc_38_crypto_keygen_service import NewBtcCryptoKeygenService
-from keygen.currencies.bch_38_crypto_keygen_service import NewBchCryptoKeygenService
-from keygen.currencies.club_38_crypto_keygen_service import NewClubCryptoKeygenService
-from keygen.currencies.doge_38_crypto_keygen_service import NewDogeCryptoKeygenService
-from keygen.currencies.eos_38_crypto_keygen_service import NewEosCryptoKeygenService
-from keygen.currencies.ltc_38_crypto_keygen_service import NewLtcCryptoKeygenService
-from keygen.currencies.dash_38_crypto_keygen_service import NewDashCryptoKeygenService
-from keygen.currencies.eth_38_crypto_keygen_service import NewEthCryptoKeygenService
-from keygen.currencies.pote_38_crypto_keygen_service import NewPoteCryptoKeygenService
-from keygen.currencies.usdt_38_crypto_keygen_service import NewUsdtCryptoKeygenService
-from keygen.currencies.waves_38_crypto_keygen_service import NewWavesCryptoKeygenService
-from keygen.currencies.xmr_38_crypto_keygen_service import NewXmrCryptoKeygenService
+from keygen.currencies.bnb_38_crypto_keygen_service import Bnb38CryptoKeygenService
+from keygen.currencies.btc_38_crypto_keygen_service import Btc38CryptoKeygenService
+from keygen.currencies.bch_38_crypto_keygen_service import Bch38CryptoKeygenService
+from keygen.currencies.club_38_crypto_keygen_service import Club38CryptoKeygenService
+from keygen.currencies.doge_38_crypto_keygen_service import Doge38CryptoKeygenService
+from keygen.currencies.eos_38_crypto_keygen_service import Eos38CryptoKeygenService
+from keygen.currencies.ltc_38_crypto_keygen_service import Ltc38CryptoKeygenService
+from keygen.currencies.dash_38_crypto_keygen_service import Dash38CryptoKeygenService
+from keygen.currencies.eth_38_crypto_keygen_service import Eth38CryptoKeygenService
+from keygen.currencies.pote_38_crypto_keygen_service import Pote38CryptoKeygenService
+from keygen.currencies.usdt_38_crypto_keygen_service import Usdt38CryptoKeygenService
+from keygen.currencies.waves_38_crypto_keygen_service import Waves38CryptoKeygenService
+from keygen.currencies.xmr_38_crypto_keygen_service import Xmr38CryptoKeygenService
 
 
 class CryptoKeygenFactory:
@@ -33,29 +33,29 @@ class CryptoKeygenFactory:
     @staticmethod
     def get_crypto_keygen_service(currency):
         if currency == "BTC":
-            return NewBtcCryptoKeygenService()
+            return Btc38CryptoKeygenService()
         if currency == "BCH":
-            return NewBchCryptoKeygenService()
+            return Bch38CryptoKeygenService()
         if currency == "LTC":
-            return NewLtcCryptoKeygenService()
+            return Ltc38CryptoKeygenService()
         if currency == "DASH":
-            return NewDashCryptoKeygenService()
-        if currency == "CLUB": #Python2.7 version
-            return NewClubCryptoKeygenService()
+            return Dash38CryptoKeygenService()
+        if currency == "CLUB":  #FIXME migrate from Python2.7 version
+            return Club38CryptoKeygenService()
         if currency == "ETH":
-            return NewEthCryptoKeygenService()
+            return Eth38CryptoKeygenService()
         if currency == "XMR":
-            return NewXmrCryptoKeygenService()
-        if currency == "WAVES": #Python2.7 low priority
-            return NewWavesCryptoKeygenService()
-        if currency == "POTE": #Python2.7
-            return NewPoteCryptoKeygenService()
-        if currency == "USDT":
-            return NewUsdtCryptoKeygenService()
+            return Xmr38CryptoKeygenService()
+        if currency == "WAVES":  #FIXME migrate from Python2.7 low priority
+            return Waves38CryptoKeygenService()
+        if currency == "POTE":  #FIXME migrate from Python2.7
+            return Pote38CryptoKeygenService()
+        if currency == "USDT": #FIXME migrate from Python3.6
+            return Usdt38CryptoKeygenService()
         if currency == "BNB":
-            return NewBnbCryptoKeygenService()
+            return Bnb38CryptoKeygenService()
         if currency == "EOS":
-            return NewEosCryptoKeygenService()
+            return Eos38CryptoKeygenService()
         if currency == "DOGE":
-            return NewDogeCryptoKeygenService()
+            return Doge38CryptoKeygenService()
         raise Exception("Coin not supported")

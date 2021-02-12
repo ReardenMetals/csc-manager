@@ -3,7 +3,7 @@ from keygen.crypto_keygen_service import CryptoKeygenService
 
 from monero.seed import Seed
 
-class NewXmrCryptoKeygenService(CryptoKeygenService):
+class Xmr38CryptoKeygenService(CryptoKeygenService):
 
     def generate(self):
         s = Seed()

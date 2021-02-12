@@ -3,7 +3,7 @@ from keygen.crypto_keygen_service import CryptoKeygenService
 from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes, WifDecoder
 
 
-class NewDogeCryptoKeygenService(CryptoKeygenService):
+class Doge38CryptoKeygenService(CryptoKeygenService):
 
     def generate(self):
         # Generate random mnemonic

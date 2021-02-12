@@ -4,7 +4,7 @@ import json
 import subprocess
 
 
-class NewWavesCryptoKeygenService(CryptoKeygenService):
+class Waves38CryptoKeygenService(CryptoKeygenService):
 
     def generate(self):
         return self.generateList(1)[0]

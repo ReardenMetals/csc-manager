@@ -3,7 +3,7 @@ from keygen.crypto_keygen_service import CryptoKeygenService
 import json
 import subprocess
 
-class NewUsdtCryptoKeygenService(CryptoKeygenService):
+class Usdt38CryptoKeygenService(CryptoKeygenService):
 
     def generate(self):
         return self.generateList(1)[0]
