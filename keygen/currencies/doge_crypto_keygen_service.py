@@ -11,7 +11,7 @@ class DogeCryptoKeygenService(CryptoKeygenService):
     def generateList(self, count):
         with open('config.json') as json_file:
             config_json = json.load(json_file)
-            venv_doge = config_json['venv_36']
+            venv_doge = config_json['venv_doge']
             usd_external_script = config_json['doge_external_script']
         p = subprocess.check_output([venv_doge, usd_external_script, str(count)])
         objList = json.loads(p)
