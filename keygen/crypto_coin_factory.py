@@ -11,6 +11,7 @@ from keygen.currencies.xmr_crypto_coin_service import XmrCoinService
 from keygen.currencies.pote_crypto_coin_service import PoteCoinService
 from keygen.currencies.waves_crypto_coin_service import WavesCoinService
 from keygen.currencies.doge_crypto_coin_service import DogeCoinService
+from keygen.currencies.xrp_crypto_coin_service import RippleCoinService
 
 
 class CoinFactory:
@@ -19,7 +20,7 @@ class CoinFactory:
 
     @staticmethod
     def get_available_currencies():
-        return ['BTC', 'BCH', 'LTC', 'CLUB', 'DASH', 'ETH', 'XMR', 'WAVES', 'POTE', 'DOGE', 'USDT', 'BNB', 'EOS']
+        return ['BTC', 'BCH', 'LTC', 'CLUB', 'DASH', 'ETH', 'XMR', 'WAVES', 'POTE', 'DOGE', 'USDT', 'BNB', 'EOS', 'XRP']
 
     @staticmethod
     def get_coin_service(currency):
@@ -49,4 +50,6 @@ class CoinFactory:
             return BnbCoinService()
         if currency == "EOS":
             return EosCoinService()
+        if currency == "XRP":
+            return RippleCoinService()
         raise Exception("Coin not supported")
