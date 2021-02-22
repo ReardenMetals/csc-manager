@@ -4,8 +4,6 @@ from keygen.crypto_coin import CryptoCoin
 from keygen.crypto_coin_service import CoinService
 from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes, WifDecoder, DashConf, \
     Base58Encoder
-import json
-import subprocess
 
 from keygen.wif_validator import is_compressed_wif
 
@@ -53,13 +51,3 @@ class DashCoinService(CoinService):
         pub_key_bytes = b'\x04' + to_hex
         address = Base58Encoder.CheckEncode(config_alias.P2PKH_NET_VER.Main() + CryptoUtils.Hash160(pub_key_bytes))
         return CryptoCoin(address, private_key)
-
-    # Deprecated
-    def get_coin_subprocess(self, private_key):
-        with open('config.json') as json_file:
-            config_json = json.load(json_file)
-            venv_dash = config_json['venv_27']
-            dash_external_script = config_json['dash_external_script']
-        p = subprocess.check_output([venv_dash, dash_external_script, str(private_key)])
-        obj = json.loads(p)
-        return CryptoCoin(obj["address"], obj["wif"], obj["seed"])
