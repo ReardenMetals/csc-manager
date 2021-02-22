@@ -12,7 +12,7 @@ class HeaderWidget:
         self.init_ui()
 
     def init_ui(self):
-        refresh_btn = tkinter.Button(self.frame, text="Refresh", width=10, height=2)
+        refresh_btn = tkinter.Button(self.frame, text="Refresh",font=('Arial', 8, 'bold'), width=10, height=2)
         refresh_btn.config(command=self.on_refresh_btn_clicked)
         refresh_btn.pack(side=tkinter.LEFT, padx=(0, 10), pady=(16, 0))
 

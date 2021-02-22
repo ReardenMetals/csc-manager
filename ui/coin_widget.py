@@ -82,12 +82,12 @@ class CoinWidget:
         self.clean_frame()
         parent_frame = tkinter.Frame(self.bottom_frame)
         parent_frame.grid(row=0, column=0, sticky="nsew")
-        tkinter.Label(parent_frame, text="PRIVATE KEY(WIF)", fg="black", bg='GREEN').pack()
-        tkinter.Label(parent_frame, text=self.private_key, fg="black", bg='RED').pack()
-        tkinter.Label(parent_frame, text="SNIP", fg="black", bg='GREEN').pack()
-        tkinter.Label(parent_frame, text=self.snip, fg="black", bg='RED').pack()
-        tkinter.Label(parent_frame, text="ADDRESS", fg="black", bg='GREEN').pack()
-        tkinter.Label(parent_frame, text=self.address, fg="black", bg='RED').pack()
+        tkinter.Label(parent_frame, text="PRIVATE KEY(WIF)", font=('Times', 10, 'bold'),fg="white", bg='darkgreen', bd=7).pack()
+        tkinter.Label(parent_frame, text=self.private_key, font=('Times', 12), fg="black", bd=7).pack()
+        tkinter.Label(parent_frame, text="SNIP", font=('Times', 10), fg="white", bg='darkgreen', bd=7).pack()
+        tkinter.Label(parent_frame, text=self.snip, font=('Times', 12), fg="black", bd=7).pack()
+        tkinter.Label(parent_frame, text="ADDRESS", font=('Times', 10), fg="white", bg='darkgreen', bd=7).pack()
+        tkinter.Label(parent_frame, text=self.address, font=('Times', 12), fg="black", borderwidth=1, bd=7).pack()
         parent_frame.place()
         self.child_frame = parent_frame
 
