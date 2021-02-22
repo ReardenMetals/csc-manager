@@ -7,7 +7,7 @@ Install needed dependencies:
 
 Run the script:
 
-    python2.7 script.py 10 output/ BTC  
+    python3.8 script.py
 
 Linux install:
 
@@ -23,6 +23,16 @@ Linux install:
     pip install chardet==3.0.2
     pip install pysha3==1.0.2
     pip install pywaves
+    pip install bip_utils
+    pip install aioeos
+    pip install monero
+    pip install cashaddress
+    pip install Pillow
+    pip install opencv-python
+    pip install pyzbar
+    pip install imutils
+    pip install asynctkinter
+    pip install pygame
 
 Change log:
 
