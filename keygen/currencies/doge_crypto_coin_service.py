@@ -1,9 +1,10 @@
 from keygen.crypto_coin import CryptoCoin
-from keygen.crypto_keygen_service import CryptoKeygenService
-from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes, WifDecoder
+from keygen.crypto_coin_service import CoinService
+from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes, WifDecoder, \
+    DogecoinConf
 
 
-class Doge38CryptoKeygenService(CryptoKeygenService):
+class DogeCoinService(CoinService):
 
     def generate(self):
         # Generate random mnemonic
@@ -21,8 +22,8 @@ class Doge38CryptoKeygenService(CryptoKeygenService):
 
         return CryptoCoin(address, wif, seed)
 
-    def format(self, coin):
-        return "{},{},{}\n".format(coin.wif, coin.address, coin.seed)
-
-    def get_csv_header(self):
-        return "WIF,Address,Seed\n"
+    def get_coin(self, private_key):
+        decodedWif = WifDecoder.Decode(wif_str=private_key, net_addr_ver = DogecoinConf.WIF_NET_VER.Main())
+        keyPair = Bip44.FromAddressPrivKey(decodedWif, Bip44Coins.DOGECOIN)
+        address = keyPair.PublicKey().ToAddress()
+        return CryptoCoin(address, private_key)

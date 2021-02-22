@@ -1,7 +1,7 @@
-from keygen.crypto_checker_factory import CoinCheckerFactory
+from keygen.crypto_coin_factory import CoinFactory
 
 def test_coin(currency, private_key, address):
-    service = CoinCheckerFactory.get_coin_service(currency)
+    service = CoinFactory.get_coin_service(currency)
     gen_address = service.get_address(private_key)
     assert gen_address == address
 

@@ -1,4 +1,4 @@
-from keygen.crypto_checker_factory import CoinCheckerFactory
+from keygen.crypto_coin_factory import CoinFactory
 from scan_states.context import Context
 from scan_states.state_factory import get_state
 from scan_states.states_enum import States
@@ -16,7 +16,7 @@ class App(Context):
         self.window.resizable(False, False)
         self.window.title(window_title)
 
-        currencies = CoinCheckerFactory.get_available_currencies()
+        currencies = CoinFactory.get_available_currencies()
         self.currency = currencies[0]
         self.main_widget = MainWidget(self.window,
                                       currencies=currencies,
@@ -40,7 +40,7 @@ class App(Context):
 
     def select_currency(self, currency):
         self.currency = currency
-        self.coin_service = CoinCheckerFactory.get_coin_service(self.currency)
+        self.coin_service = CoinFactory.get_coin_service(self.currency)
         self.change_state(States.SCAN_COIN_STATE)
         self.main_widget.set_currency(currency)
         print("Selected currency: ", self.currency)

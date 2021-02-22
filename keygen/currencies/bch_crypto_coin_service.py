@@ -1,12 +1,28 @@
-from bip_utils import BitcoinConf, Bip44Coins, WifDecoder, Bip44, Base58Encoder
+from keygen.crypto_coin_service import CoinService
 from bip_utils.utils import CryptoUtils
 from cashaddress import convert
 from keygen.crypto_coin import CryptoCoin
-from keygen.crypto_check_service import CoinService
+from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, BitcoinConf, Bip44Coins, WifDecoder, Bip44, Base58Encoder
 import json
 import subprocess
 
 class BchCoinService(CoinService):
+
+    def generate(self):
+        # Generate random mnemonic
+        mnemonic = Bip39MnemonicGenerator.FromWordsNumber(12)
+
+        # Generate seed from mnemonic
+        seed_bytes = Bip39SeedGenerator(mnemonic).Generate()
+
+        # Generate BIP44 master keys
+        bip_obj_mst = Bip44.FromSeed(seed_bytes, Bip44Coins.BITCOIN_CASH)
+
+        address = bip_obj_mst.PublicKey().ToAddress().replace('bitcoincash:', '')
+        wif = bip_obj_mst.PrivateKey().ToWif()
+        seed = mnemonic
+
+        return CryptoCoin(address, wif, seed)
 
     def get_coin(self, private_key):
         config_alias = BitcoinConf
@@ -19,6 +35,7 @@ class BchCoinService(CoinService):
         address = convert.to_cash_address(legacy_address).replace('bitcoincash:', '')
         return CryptoCoin(address, private_key)
 
+    # Deprecated
     def get_coin_sub_process(self, private_key):
         with open('config.json') as json_file:
             config_json = json.load(json_file)

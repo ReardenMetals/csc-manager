@@ -1,19 +1,19 @@
-from keygen.currencies.bnb_crypto_checker_service import BnbCoinService
-from keygen.currencies.btc_crypto_checker_service import BtcCoinService
-from keygen.currencies.bch_crypto_checker_service import BchCoinService
-from keygen.currencies.eos_crypto_checker_service import EosCoinService
-from keygen.currencies.ltc_crypto_checker_service import LtcCoinService
-from keygen.currencies.club_crypto_checker_service import ClubCoinService
-from keygen.currencies.dash_crypto_checker_service import DashCoinService
-from keygen.currencies.eth_crypto_checker_service import EthCoinService
-from keygen.currencies.usdt_crypto_checker_service import UsdtCoinService
-from keygen.currencies.xmr_crypto_checker_service import XmrCoinService
-from keygen.currencies.pote_crypto_checker_service import PoteCoinService
-from keygen.currencies.waves_crypto_checker_service import WavesCoinService
-from keygen.currencies.doge_crypto_checker_service import DogeCoinService
+from keygen.currencies.bnb_crypto_coin_service import BnbCoinService
+from keygen.currencies.btc_crypto_coin_service import BtcCoinService
+from keygen.currencies.bch_crypto_coin_service import BchCoinService
+from keygen.currencies.eos_crypto_coin_service import EosCoinService
+from keygen.currencies.ltc_crypto_coin_service import LtcCoinService
+from keygen.currencies.club_crypto_coin_service import ClubCoinService
+from keygen.currencies.dash_crypto_coin_service import DashCoinService
+from keygen.currencies.eth_crypto_coin_service import EthCoinService
+from keygen.currencies.usdt_crypto_coin_service import UsdtCoinService
+from keygen.currencies.xmr_crypto_coin_service import XmrCoinService
+from keygen.currencies.pote_crypto_coin_service import PoteCoinService
+from keygen.currencies.waves_crypto_coin_service import WavesCoinService
+from keygen.currencies.doge_crypto_coin_service import DogeCoinService
 
 
-class CoinCheckerFactory:
+class CoinFactory:
     def __init__(self):
         pass
 

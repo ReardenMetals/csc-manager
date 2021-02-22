@@ -112,3 +112,26 @@ For a developer:
         then open folder python-axolotl-master and run command python setup.py install
     - 11) in terminal run commands: pip install --target ./package pybitcoin PyWaves==0.8.15 cashaddress ecdsa pysha3
     pip install ph4-moneropy
+
+Coin Checker:
+Python 3.8.6
+
+Python Dependencies required:
+
+    pip install opencv-python
+    pip install Pillow
+    sudo apt install python3-tk
+    pip install pyzbar
+    pip install bip_utils
+    pip install cashaddress
+    pip install aioeos
+    pip install imutils
+    pip install asynctkinter
+    pip install pygame
+
+Windows dependencies:
+    
+    vcredist_x64
+    Microsoft Visual C++ 14.0
+
+    vs_buildtools_xxxxx.exe  --layout c:\offlineBuildTool --lang en-us

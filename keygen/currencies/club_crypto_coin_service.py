@@ -1,10 +1,11 @@
 from keygen.crypto_coin import CryptoCoin
-from keygen.crypto_keygen_service import CryptoKeygenService
+from keygen.crypto_coin_service import CoinService
 import json
 import subprocess
 
 
-class Club38CryptoKeygenService(CryptoKeygenService):
+# FIXME implement python3.8 generate!
+class ClubCoinService(CoinService):
 
     def generate(self):
         return self.generateList(1)[0]
@@ -19,3 +20,11 @@ class Club38CryptoKeygenService(CryptoKeygenService):
         coins = [CryptoCoin(obj["address"], obj["wif"], obj["seed"]) for obj in objList]
         return coins
 
+    def get_coin(self, private_key):
+        with open('config.json') as json_file:
+            config_json = json.load(json_file)
+            venv_usdt = config_json['venv_27']
+            usd_external_script = config_json['club_external_script']
+        p = subprocess.check_output([venv_usdt, usd_external_script, str(private_key)])
+        obj = json.loads(p)
+        return CryptoCoin(obj["address"], obj["wif"], obj["seed"])

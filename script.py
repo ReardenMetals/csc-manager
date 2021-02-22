@@ -1,4 +1,4 @@
-from keygen.crypto_keygen_factory import CryptoKeygenFactory
+from keygen.crypto_coin_factory import CoinFactory
 import json
 
 
@@ -80,11 +80,11 @@ def init():
     lazer_type = default_input("What laser is this (A, B, C)? ", "A").upper()
 
     try:
-        factory = CryptoKeygenFactory()
-        crypto_keygen_service = factory.get_crypto_keygen_service(coin)
+        factory = CoinFactory()
+        crypto_keygen_service = factory.get_coin_service(coin)
 
         if max_iterator_count > 0:
-            coin_list = crypto_keygen_service.generateList(max_iterator_count)
+            coin_list = crypto_keygen_service.generate_list(max_iterator_count)
             saveCoinsList(crypto_keygen_service, coin_list, base_file_name)
             saveAssetIds(crypto_keygen_service, coin_list, asset_id_file_name)
             savePrivateKeys(crypto_keygen_service, coin_list, private_file_name)
