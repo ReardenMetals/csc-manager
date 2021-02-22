@@ -20,6 +20,14 @@ class CoinFactory:
 
     @staticmethod
     def get_available_currencies():
+        return CoinFactory.get_default_available_currencies()
+
+    @staticmethod
+    def get_default_available_currencies():
+        return ['BTC', 'BCH', 'CLUB', 'DASH', 'LTC',  'ETH']
+
+    @staticmethod
+    def get_all_available_currencies():
         return ['BTC', 'BCH', 'LTC', 'CLUB', 'DASH', 'ETH', 'XMR', 'WAVES', 'POTE', 'DOGE', 'USDT', 'BNB', 'EOS', 'XRP']
 
     @staticmethod
