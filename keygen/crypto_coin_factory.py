@@ -1,4 +1,5 @@
 from keygen.currencies.bnb_crypto_coin_service import BnbCoinService
+from keygen.currencies.bsv_crypto_coin_service import BsvCoinService
 from keygen.currencies.btc_crypto_coin_service import BtcCoinService
 from keygen.currencies.bch_crypto_coin_service import BchCoinService
 from keygen.currencies.eos_crypto_coin_service import EosCoinService
@@ -24,11 +25,12 @@ class CoinFactory:
 
     @staticmethod
     def get_default_available_currencies():
-        return ['BTC', 'BCH', 'CLUB', 'DASH', 'LTC',  'ETH']
+        return ['BTC', 'BCH', 'CLUB', 'DASH', 'LTC',  'ETH', 'BSV']
 
     @staticmethod
     def get_all_available_currencies():
-        return ['BTC', 'BCH', 'LTC', 'CLUB', 'DASH', 'ETH', 'XMR', 'WAVES', 'POTE', 'DOGE', 'USDT', 'BNB', 'EOS', 'XRP']
+        return ['BTC', 'BCH', 'LTC', 'CLUB', 'DASH', 'ETH', 'XMR', 'WAVES', 'POTE', 'DOGE', 'USDT', 'BNB', 'EOS', 'XRP',
+                'BSV']
 
     @staticmethod
     def get_coin_service(currency):
@@ -60,4 +62,6 @@ class CoinFactory:
             return EosCoinService()
         if currency == "XRP":
             return RippleCoinService()
+        if currency == "BSV":
+            return BsvCoinService()
         raise Exception("Coin not supported")
