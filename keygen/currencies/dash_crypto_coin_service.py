@@ -45,8 +45,8 @@ class DashCoinService(CoinService):
         print("Warning Uncompressed key")
         config_alias = DashConf
         coin_type = Bip44Coins.DASH
-        decodedWif = WifDecoder.Decode(wif_str=private_key, net_addr_ver=config_alias.WIF_NET_VER.Main())
-        bip44_mst = Bip44.FromAddressPrivKey(decodedWif, coin_type)
+        decoded_wif = WifDecoder.Decode(wif_str=private_key, net_addr_ver=config_alias.WIF_NET_VER.Main())
+        bip44_mst = Bip44.FromAddressPrivKey(decoded_wif, coin_type)
         to_hex = bip44_mst.PublicKey().RawUncompressed().ToBytes()
         pub_key_bytes = b'\x04' + to_hex
         address = Base58Encoder.CheckEncode(config_alias.P2PKH_NET_VER.Main() + CryptoUtils.Hash160(pub_key_bytes))

@@ -9,6 +9,7 @@ from keygen.wif_validator import is_compressed_wif
 POTE_P2PKH_NET_VER = NetVersions(b"\x37")
 POTE_WIF_NET_VER = NetVersions(b"\xb7")
 
+
 class PoteCoinService(CoinService):
 
     def generate(self):

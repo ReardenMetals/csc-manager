@@ -1,9 +1,11 @@
 from keygen.crypto_coin_factory import CoinFactory
 
+
 def test_coin(currency, private_key, address):
     service = CoinFactory.get_coin_service(currency)
     gen_address = service.get_address(private_key)
     assert gen_address == address
+
 
 print("Checking BTC...")
 test_coin("BTC", "5Ke8bzyw8g1H172bCU4jCXQpvVRD3eSFCmsxR81RYJZpTM7xL9X", "1GDLTzQDLJJLnihqVgcjwuTaSCwx8W4P2B")

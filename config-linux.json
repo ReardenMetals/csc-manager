@@ -3,14 +3,5 @@
   "asset_id_file_name": "./output/addressid.txt",
   "private_file_name": "./output/private.txt",
   "public_file_name": "./output/public.txt",
-  "sequence_file_name": "./output/sequence_file_name.txt",
-
-  "venv_usdt": "./venv36/bin/python",
-  "venv_bnb": "./venv36/bin/python",
-  "venv_eos": "./venv38/bin/python",
-  "venv_36": "./venv36/bin/python",
-  "usd_external_script": "./keygen/external/usd_generate_36.py",
-  "bnb_external_script": "./keygen/external/bnb_generate_36.py",
-  "eos_external_script": "./keygen/external/eos_generate_38.py",
-  "doge_external_script": "./keygen/external/doge_generate_36.py"
+  "sequence_file_name": "./output/sequence_file_name.txt"
 }
