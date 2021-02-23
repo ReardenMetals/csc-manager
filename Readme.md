@@ -130,6 +130,9 @@ Python Dependencies required:
     pip install pygame
     pip install base58==2.0.0 (for EOS)
     pip install PyWaves==0.8.15
+    pip install bitsv
+    pip install pywallet
+    pip install monero
 
 Windows dependencies:
     
