@@ -1,3 +1,4 @@
+from keygen.currencies.ada_crypto_coin_service import CardanoCoinService
 from keygen.currencies.bnb_crypto_coin_service import BnbCoinService
 from keygen.currencies.bsv_crypto_coin_service import BsvCoinService
 from keygen.currencies.btc_crypto_coin_service import BtcCoinService
@@ -25,12 +26,8 @@ class CoinFactory:
 
     @staticmethod
     def get_default_available_currencies():
-        return ['BTC', 'BCH', 'CLUB', 'DASH', 'LTC',  'ETH', 'BSV']
-
-    @staticmethod
-    def get_all_available_currencies():
-        return ['BTC', 'BCH', 'LTC', 'CLUB', 'DASH', 'ETH', 'XMR', 'WAVES', 'POTE', 'DOGE', 'USDT', 'BNB', 'EOS', 'XRP',
-                'BSV']
+        return ['BTC', 'BCH', 'CLUB', 'DASH', 'LTC', 'ETH', 'BSV', 'DOGE', 'XRP', 'XMR', 'BNB', 'EOS', 'POTE', 'WAVES',
+                'USDT']  # TODO ADD 'ADA/
 
     @staticmethod
     def get_coin_service(currency):
@@ -64,4 +61,6 @@ class CoinFactory:
             return RippleCoinService()
         if currency == "BSV":
             return BsvCoinService()
+        if currency == "ADA":
+            return CardanoCoinService()
         raise Exception("Coin not supported")
