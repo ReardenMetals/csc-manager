@@ -129,6 +129,7 @@ Python Dependencies required:
     pip install asynctkinter
     pip install pygame
     pip install base58==2.0.0 (for EOS)
+    pip install PyWaves==0.8.15
 
 Windows dependencies:
     
