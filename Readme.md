@@ -128,6 +128,7 @@ Python Dependencies required:
     pip install imutils
     pip install asynctkinter
     pip install pygame
+    pip install base58==2.0.0 (for EOS)
 
 Windows dependencies:
     

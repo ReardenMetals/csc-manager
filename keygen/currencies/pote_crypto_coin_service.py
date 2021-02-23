@@ -1,30 +1,55 @@
+from bip_utils import NetVersions, Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44Coins, Bip44, WifEncoder, \
+    BitcoinConf, Base58Encoder, WifDecoder
+from bip_utils.utils import CryptoUtils
+
 from keygen.crypto_coin import CryptoCoin
 from keygen.crypto_coin_service import CoinService
-import json
-import subprocess
+from keygen.wif_validator import is_compressed_wif
 
+POTE_P2PKH_NET_VER = NetVersions(b"\x37")
+POTE_WIF_NET_VER = NetVersions(b"\xb7")
 
-# FIXME implement python3.8 generate!
 class PoteCoinService(CoinService):
 
     def generate(self):
-        return self.generateList(1)[0]
+        # Generate random mnemonic
+        mnemonic = Bip39MnemonicGenerator.FromWordsNumber(12)
 
-    def generateList(self, count):
-        with open('config.json') as json_file:
-            config_json = json.load(json_file)
-            venv_eos = config_json['venv_27']
-            eos_external_script = config_json['pote_external_script']
-        p = subprocess.check_output([venv_eos, eos_external_script, str(count)])
-        objList = json.loads(p)
-        coins = [CryptoCoin(obj["address"], obj["wif"], obj["seed"]) for obj in objList]
-        return coins
+        # Generate seed from mnemonic
+        seed_bytes = Bip39SeedGenerator(mnemonic).Generate()
+
+        # Generate BIP44 master keys
+        bip_obj_mst = Bip44.FromSeed(seed_bytes, Bip44Coins.BITCOIN)
+
+        wif = WifEncoder.Encode(bip_obj_mst.PrivateKey().Raw().ToBytes(), True, POTE_WIF_NET_VER.Main())
+
+        pub_key_bytes = bip_obj_mst.PublicKey().RawCompressed().ToBytes()
+        address = Base58Encoder.CheckEncode(POTE_P2PKH_NET_VER.Main() + CryptoUtils.Hash160(pub_key_bytes))
+
+        seed = mnemonic
+
+        return CryptoCoin(address, wif, seed)
 
     def get_coin(self, private_key):
-        with open('config.json') as json_file:
-            config_json = json.load(json_file)
-            venv_pote = config_json['venv_27']
-            pote_external_script = config_json['pote_external_script']
-        p = subprocess.check_output([venv_pote, pote_external_script, str(private_key)])
-        obj = json.loads(p)
-        return CryptoCoin(obj["address"], obj["wif"], obj["seed"])
+        if is_compressed_wif(private_key):
+            return self.get_default_coin(private_key)
+        else:
+            return self.get_uncompressed_coin(private_key)
+
+    @staticmethod
+    def get_default_coin(private_key):
+        decoded_wif = WifDecoder.Decode(wif_str=private_key, net_addr_ver=POTE_WIF_NET_VER.Main())
+        bip44_mst = Bip44.FromAddressPrivKey(decoded_wif, Bip44Coins.BITCOIN)
+        pub_key_bytes = bip44_mst.PublicKey().RawCompressed().ToBytes()
+        address = Base58Encoder.CheckEncode(POTE_P2PKH_NET_VER.Main() + CryptoUtils.Hash160(pub_key_bytes))
+        return CryptoCoin(address, private_key)
+
+    @staticmethod
+    def get_uncompressed_coin(private_key):
+        print("Warning Uncompressed key")
+        decoded_wif = WifDecoder.Decode(wif_str=private_key, net_addr_ver=POTE_WIF_NET_VER.Main())
+        bip44_mst = Bip44.FromAddressPrivKey(decoded_wif, Bip44Coins.BITCOIN)
+        to_hex = bip44_mst.PublicKey().RawUncompressed().ToBytes()
+        pub_key_bytes = b'\x04' + to_hex
+        address = Base58Encoder.CheckEncode(POTE_P2PKH_NET_VER.Main() + CryptoUtils.Hash160(pub_key_bytes))
+        return CryptoCoin(address, private_key)

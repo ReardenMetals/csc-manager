@@ -9,7 +9,7 @@ from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Co
 from keygen.wif_validator import is_compressed_wif
 
 CLUB_P2PKH_NET_VER = NetVersions(b"\x1c")
-CLUB_WIF_NET_VER = NetVersions(b"\x99", b"\xef")
+CLUB_WIF_NET_VER = NetVersions(b"\x99")
 
 
 # FIXME implement python3.8 generate!
@@ -43,7 +43,6 @@ class ClubCoinService(CoinService):
 
     @staticmethod
     def get_default_coin(private_key):
-        print("Warning Uncompressed key")
         decoded_wif = WifDecoder.Decode(wif_str=private_key, net_addr_ver=CLUB_WIF_NET_VER.Main())
         bip44_mst = Bip44.FromAddressPrivKey(decoded_wif, Bip44Coins.BITCOIN)
         pub_key_bytes = bip44_mst.PublicKey().RawCompressed().ToBytes()
