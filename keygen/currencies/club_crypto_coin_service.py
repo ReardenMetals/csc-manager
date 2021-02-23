@@ -11,8 +11,6 @@ from keygen.wif_validator import is_compressed_wif
 CLUB_P2PKH_NET_VER = NetVersions(b"\x1c")
 CLUB_WIF_NET_VER = NetVersions(b"\x99")
 
-
-# FIXME implement python3.8 generate!
 class ClubCoinService(CoinService):
 
     def generate(self):
