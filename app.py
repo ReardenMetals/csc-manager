@@ -1,17 +1,19 @@
 from keygen.crypto_coin_factory import CoinFactory
+from logger import StdoutRedirector
 from scan_states.context import Context
 from scan_states.state_factory import get_state
 from scan_states.states_enum import States
 from ui.main_widget import MainWidget
 import asynctkinter as at
 import pygame
+import sys
 
 
 class App(Context):
 
     def __init__(self, window_title, window):
         super().__init__()
-
+        sys.stdout = StdoutRedirector(self)
         self.window = window
         # self.window.resizable(False, False)
         self.window.title(window_title)
@@ -103,6 +105,9 @@ class App(Context):
 
     def sleep(self, milliseconds):
         return at.sleep(milliseconds, after=self.window.after)
+
+    def log(self, log):
+        self.main_widget.add_log(log)
 
     @staticmethod
     def _play_song(file_name: str):
