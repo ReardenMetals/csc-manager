@@ -13,7 +13,7 @@ class App(Context):
         super().__init__()
 
         self.window = window
-        self.window.resizable(False, False)
+        # self.window.resizable(False, False)
         self.window.title(window_title)
 
         currencies = CoinFactory.get_available_currencies()
@@ -26,6 +26,7 @@ class App(Context):
 
         self.state = None
         self.fetched_address = None
+        self.private_key = None
         self.coin_service = None
 
         self.select_currency(self.currency)
@@ -53,6 +54,12 @@ class App(Context):
         self.state = get_state(new_state, self)
         self.state.init_state()
 
+    def get_private_key(self):
+        return self.private_key
+
+    def set_coin_private_key(self, private_key):
+        self.private_key = private_key
+
     def get_fetched_address(self):
         return self.fetched_address
 
@@ -77,6 +84,10 @@ class App(Context):
     def show_coin_details_info(self, private_key, snip, address):
         self.main_widget.show_coin_details_info(private_key, snip, address)
         self.fetched_address = address
+
+    def show_coin_private_key(self, private_key):
+        self.set_coin_private_key(private_key)
+        self.main_widget.show_coin_details_info(private_key, "...", "...")
 
     def play_success_song(self):
         self._play_song("./resources/audio/definite.mp3")

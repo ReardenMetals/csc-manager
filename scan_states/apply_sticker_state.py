@@ -15,5 +15,5 @@ class ApplyStickerState(ScanState):
         self.context.start_async(self.delay_task())
 
     async def delay_task(self):
-        await self.context.sleep(2000)
+        await self.context.sleep(2400)
         self.change_state(States.SCAN_COIN_STATE)

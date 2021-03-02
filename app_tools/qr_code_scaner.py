@@ -28,7 +28,7 @@ class QrCodeScanner:
 
         if callback is not None:
             self.increment += 1
-            if (self.barcode_info != barcode_info) or (self.increment - self.barcode_increment > 15):
+            if (self.barcode_info != barcode_info) or (self.increment - self.barcode_increment > 5):
                 self.barcode_info = barcode_info
                 self.barcode_increment = self.increment
                 callback(barcode_info)

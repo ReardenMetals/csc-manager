@@ -15,6 +15,7 @@ class ScanCoinState(ScanState):
         self.context.set_action_title("Scan Coin")
         self.context.show_none()
         self.context.set_fetched_address(None)
+        self.context.set_coin_private_key(None)
 
     def on_qr_code_scanned(self, qr_code_text):
         super().on_qr_code_scanned(qr_code_text)
@@ -28,6 +29,7 @@ class ScanCoinState(ScanState):
             self.private_key_text = private_key_text
             print('private_key:', self.private_key_text)
             private_key = self.private_key_text
+            self.context.show_coin_private_key(private_key)
             self.context.start_async(self.load_address_from_private_async(private_key))
 
     async def load_address_from_private_async(self, private_key):

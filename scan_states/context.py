@@ -11,6 +11,12 @@ class Context:
     def get_fetched_address(self):
         pass
 
+    def get_private_key(self):
+        pass
+
+    def set_coin_private_key(self, private_key):
+        pass
+
     def set_fetched_address(self, fetched_address):
         pass
 
@@ -30,6 +36,9 @@ class Context:
         pass
 
     def show_coin_details_info(self, private_key, snip, address):
+        pass
+
+    def show_coin_private_key(self, private_key):
         pass
 
     def play_success_song(self):
