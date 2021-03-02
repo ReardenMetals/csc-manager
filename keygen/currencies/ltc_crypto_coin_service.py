@@ -6,6 +6,7 @@ from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Co
     LitecoinConf, Base58Encoder
 
 from keygen.wif_validator import is_compressed_wif
+from logger import logger
 
 
 class LtcCoinService(CoinService):
@@ -42,7 +43,7 @@ class LtcCoinService(CoinService):
 
     @staticmethod
     def get_uncompressed_coin(private_key):
-        print("Warning Uncompressed key")
+        logger.log("Warning Uncompressed key")
         config_alias = LitecoinConf
         coin_type = Bip44Coins.LITECOIN
         decoded_wif = WifDecoder.Decode(wif_str=private_key, net_addr_ver=config_alias.WIF_NET_VER.Main())

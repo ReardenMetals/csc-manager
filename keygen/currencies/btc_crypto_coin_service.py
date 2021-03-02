@@ -6,6 +6,7 @@ from bip_utils import BitcoinConf, Bip44Coins, WifDecoder, Bip44, Base58Encoder,
 from bip_utils.utils import CryptoUtils, KeyUtils
 
 from keygen.wif_validator import is_compressed_wif
+from logger import logger
 
 
 class BtcCoinService(CoinService):
@@ -41,7 +42,7 @@ class BtcCoinService(CoinService):
 
     @staticmethod
     def get_uncompressed_coin(private_key):
-        print("Warning Uncompressed key")
+        logger.log("Warning Uncompressed key")
         config_alias = BitcoinConf
         coin_type = Bip44Coins.BITCOIN
         decodedWif = WifDecoder.Decode(wif_str=private_key, net_addr_ver=config_alias.WIF_NET_VER.Main())

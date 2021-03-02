@@ -1,4 +1,5 @@
 from keygen.crypto_coin_factory import CoinFactory
+from logger import logger
 from scan_states.context import Context
 from scan_states.state_factory import get_state
 from scan_states.states_enum import States
@@ -15,6 +16,7 @@ class App(Context):
         self.window = window
         # self.window.resizable(False, False)
         self.window.title(window_title)
+        logger.set_appender(self)
 
         currencies = CoinFactory.get_available_currencies()
         self.currency = currencies[0]
@@ -103,6 +105,9 @@ class App(Context):
 
     def sleep(self, milliseconds):
         return at.sleep(milliseconds, after=self.window.after)
+
+    def log(self, *args):
+        self.main_widget.add_log(' '.join(map(str, *args)))
 
     @staticmethod
     def _play_song(file_name: str):
