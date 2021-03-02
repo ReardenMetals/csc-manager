@@ -1,7 +1,7 @@
 from scan_states.context import Context
 from scan_states.scan_state import ScanState
 from scan_states.states_enum import States
-from logger import logger
+
 
 class ScanCoinState(ScanState):
 
@@ -25,9 +25,9 @@ class ScanCoinState(ScanState):
 
     def on_private_key_scanned(self, private_key_text):
         if private_key_text != self.private_key_text:
-            logger.log("Start processing: get_address_and_id")
+            print("Start processing: get_address_and_id")
             self.private_key_text = private_key_text
-            logger.log('private_key:', self.private_key_text)
+            print('private_key:', self.private_key_text)
             private_key = self.private_key_text
             self.context.show_coin_private_key(private_key)
             self.context.start_async(self.load_address_from_private_async(private_key))
@@ -35,8 +35,8 @@ class ScanCoinState(ScanState):
     async def load_address_from_private_async(self, private_key):
         address, asset_id, error = await self.context.run_in_thread(lambda: self.load_address_and_id(private_key))
         if error is None:
-            logger.log('address, asset_id')
-            logger.log(address, asset_id)
+            print('address, asset_id')
+            print(address, asset_id)
             if address is not None and asset_id is not None:
                 self.context.show_coin_details_info(private_key, asset_id, address)
                 self.context.play_success_song()
@@ -54,5 +54,4 @@ class ScanCoinState(ScanState):
             address = None
             asset_id = None
             error = "Error loading address"
-            logger.log(error)
             return address, asset_id, error

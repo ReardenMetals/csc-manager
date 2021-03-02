@@ -14,7 +14,6 @@ from keygen.currencies.pote_crypto_coin_service import PoteCoinService
 from keygen.currencies.waves_crypto_coin_service import WavesCoinService
 from keygen.currencies.doge_crypto_coin_service import DogeCoinService
 from keygen.currencies.xrp_crypto_coin_service import RippleCoinService
-from logger import logger
 
 
 class CoinFactory:
@@ -64,5 +63,4 @@ class CoinFactory:
             return BsvCoinService()
         if currency == "ADA":
             return CardanoCoinService()
-        logger.log("Coin not supported")
         raise Exception("Coin not supported")

@@ -2,7 +2,6 @@ import tkinter
 
 from ui.footer_widget import FooterWidget
 from ui.header_widget import HeaderWidget
-from ui.log_widget import LogWidget
 
 
 class MainWidget:
@@ -23,14 +22,10 @@ class MainWidget:
         bottom_frame_width = 650
         bottom_frame_height = 350
 
-        bottom_frame = tkinter.Frame(self.frame, height=bottom_frame_height, width=bottom_frame_width, borderwidth=3)
+        bottom_frame = tkinter.Frame(self.frame, height=bottom_frame_width, width=bottom_frame_height, borderwidth=3)
         self.footer_widget = FooterWidget(bottom_frame, frame_width=bottom_frame_width,
                                           frame_height=bottom_frame_height, on_qr_code_scanned=on_qr_code_scanned)
         bottom_frame.pack(fill=tkinter.BOTH, expand=True)
-
-        log_frame = tkinter.Frame(self.frame, height=300, width=bottom_frame_width, borderwidth=3, bg='GRAY')
-        self.log_widget = LogWidget(log_frame, frame_width=bottom_frame_width)
-        log_frame.pack(fill=tkinter.BOTH, expand=True)
 
     def set_currency(self, currency):
         self.footer_widget.set_currency(currency)
@@ -49,6 +44,3 @@ class MainWidget:
 
     def show_coin_details_info(self, private_key, snip, address):
         self.footer_widget.show_coin_details_info(private_key, snip, address)
-
-    def add_log(self, text):
-        self.log_widget.add_log(text)

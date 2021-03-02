@@ -5,7 +5,6 @@ from bip_utils.utils import CryptoUtils
 from keygen.crypto_coin import CryptoCoin
 from keygen.crypto_coin_service import CoinService
 from keygen.wif_validator import is_compressed_wif
-from logger import logger
 
 POTE_P2PKH_NET_VER = NetVersions(b"\x37")
 POTE_WIF_NET_VER = NetVersions(b"\xb7")
@@ -48,7 +47,7 @@ class PoteCoinService(CoinService):
 
     @staticmethod
     def get_uncompressed_coin(private_key):
-        logger.log("Warning Uncompressed key")
+        print("Warning Uncompressed key")
         decoded_wif = WifDecoder.Decode(wif_str=private_key, net_addr_ver=POTE_WIF_NET_VER.Main())
         bip44_mst = Bip44.FromAddressPrivKey(decoded_wif, Bip44Coins.BITCOIN)
         to_hex = bip44_mst.PublicKey().RawUncompressed().ToBytes()
