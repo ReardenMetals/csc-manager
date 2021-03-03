@@ -13,7 +13,7 @@ class XmrCoinService(CoinService):
         addr = str(s.public_address())
         sk = s.secret_spend_key()
 
-        return CryptoCoin(addr, sk, seed)
+        return CryptoCoin(addr, seed, seed)
 
     def get_coin(self, private_key):
         s = Seed(phrase_or_hex=private_key)

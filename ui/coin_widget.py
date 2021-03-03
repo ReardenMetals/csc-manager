@@ -82,12 +82,14 @@ class CoinWidget:
         self.clean_frame()
         parent_frame = tkinter.Frame(self.bottom_frame)
         parent_frame.grid(row=0, column=0, sticky="nsew")
-        tkinter.Label(parent_frame, text="PRIVATE KEY(WIF)", font=('Times', 16, 'bold'),fg="white", bg='darkgreen', bd=7).pack()
-        tkinter.Label(parent_frame, text=self.private_key, font=('Times', 18), fg="black", bd=7).pack()
-        tkinter.Label(parent_frame, text="SNIP", font=('Times', 16), fg="white", bg='darkgreen', bd=7).pack()
-        tkinter.Label(parent_frame, text=self.snip, font=('Times', 18), fg="black", bd=7).pack()
-        tkinter.Label(parent_frame, text="ADDRESS", font=('Times', 16), fg="white", bg='darkgreen', bd=7).pack()
-        tkinter.Label(parent_frame, text=self.address, font=('Times', 18), fg="black", borderwidth=1, bd=7).pack()
+        tkinter.Label(parent_frame, text="PRIVATE KEY(WIF)", font=('Times', 14, 'bold'), fg="white", bg='darkgreen',
+                      bd=7).pack()
+        tkinter.Label(parent_frame, text=self.private_key, font=('Times', 14), fg="black", bd=7, wraplength=500).pack()
+        tkinter.Label(parent_frame, text="SNIP", font=('Times', 14), fg="white", bg='darkgreen', bd=7).pack()
+        tkinter.Label(parent_frame, text=self.snip, font=('Times', 14), fg="black", bd=7).pack()
+        tkinter.Label(parent_frame, text="ADDRESS", font=('Times', 14), fg="white", bg='darkgreen', bd=7).pack()
+        tkinter.Label(parent_frame, text=self.address, font=('Times', 14), fg="black", borderwidth=1, bd=7,
+                      wraplength=500).pack()
         parent_frame.place()
         self.child_frame = parent_frame
 
@@ -110,6 +112,3 @@ class CoinWidget:
 
     def set_action_title(self, title):
         self.action_title_label.configure(text=title)
-
-
-
