@@ -1,6 +1,8 @@
 /output/
 /package/
 /venv/
+/venv36/
+/venv38/
 /.idea/
 /run.sh
 /config.json

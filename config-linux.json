@@ -1,0 +1,7 @@
+{
+  "base_file_name": "./output/address.csv",
+  "asset_id_file_name": "./output/addressid.txt",
+  "private_file_name": "./output/private.txt",
+  "public_file_name": "./output/public.txt",
+  "sequence_file_name": "./output/sequence_file_name.txt"
+}
