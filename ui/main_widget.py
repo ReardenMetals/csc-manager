@@ -1,4 +1,5 @@
 import tkinter
+from tkinter import ttk
 
 from ui.footer_widget import FooterWidget
 from ui.header_widget import HeaderWidget
@@ -8,8 +9,14 @@ from ui.log_widget import LogWidget
 class MainWidget:
 
     def __init__(self, frame, currencies=None, on_qr_code_scanned=None, on_currency_selected=None, on_refreshed=None):
+
         self.frame = frame
-        top_frame = tkinter.Frame(self.frame, borderwidth=3)
+
+        self.tabControl = ttk.Notebook(frame)
+
+        self.coin_checker_frame = tkinter.Frame(self.tabControl)
+
+        top_frame = tkinter.Frame(self.coin_checker_frame, borderwidth=3)
 
         self.currencies = currencies
 
@@ -23,14 +30,29 @@ class MainWidget:
         bottom_frame_width = 650
         bottom_frame_height = 350
 
-        bottom_frame = tkinter.Frame(self.frame, height=bottom_frame_height, width=bottom_frame_width, borderwidth=3)
+        bottom_frame = tkinter.Frame(self.coin_checker_frame, height=bottom_frame_height, width=bottom_frame_width, borderwidth=3)
         self.footer_widget = FooterWidget(bottom_frame, frame_width=bottom_frame_width,
                                           frame_height=bottom_frame_height, on_qr_code_scanned=on_qr_code_scanned)
         bottom_frame.pack(fill=tkinter.BOTH, expand=True)
 
+        self.coin_checker_frame.pack()
+
+        self.keygen_frame = tkinter.Frame(self.tabControl)
+        self.update_frame = ttk.Frame(self.tabControl)
+
+        self.tabControl.add(self.coin_checker_frame, text='Coin Checker')
+        self.tabControl.add(self.keygen_frame, text='KeyGen')
+        self.tabControl.add(self.update_frame, text='Update')
+
+        self.tabControl.pack()
+
+        # Log frame
         log_frame = tkinter.Frame(self.frame, height=300, width=bottom_frame_width, borderwidth=3, bg='GRAY')
+
         self.log_widget = LogWidget(log_frame, frame_width=bottom_frame_width)
         log_frame.pack(fill=tkinter.BOTH, expand=True)
+
+
 
     def set_currency(self, currency):
         self.footer_widget.set_currency(currency)

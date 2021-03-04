@@ -5,7 +5,7 @@ from app import App
 
 def main():
     tk = tkinter.Tk()
-    App("Coin Checker 2.3", tk)
+    App("CSC Manager 1.0", tk)
     tk.mainloop()
 
 
