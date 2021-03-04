@@ -13,6 +13,7 @@ class KeygenController:
 
     async def generate_keys_async(self, count, coin, laser):
         await self.run_in_thread(lambda: generate_keys(count, coin, laser))
+        print("self.root.show_success()")
         self.root.show_success()
 
     def start_async(self, task):
@@ -20,9 +21,6 @@ class KeygenController:
 
     def run_in_thread(self, func):
         return at.run_in_thread(func, after=self.window.after)
-
-    def sleep(self, milliseconds):
-        return at.sleep(milliseconds, after=self.window.after)
 
 
 def generate_keys(count, coin, laser):

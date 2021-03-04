@@ -2,6 +2,8 @@ import tkinter
 from tkinter import messagebox
 from tkinter.ttk import Progressbar
 
+from controller.update_controller import UpdateController
+
 
 class UpdateWidget:
     def __init__(self, root):
@@ -19,11 +21,18 @@ class UpdateWidget:
 
         # Progress bar widget
         progress_frame = tkinter.Frame(root)
-        progress = Progressbar(progress_frame, orient=tkinter.HORIZONTAL, length=100, mode='indeterminate')
-        progress['value'] = 100
-        progress.pack()
+        self.progress = Progressbar(progress_frame, orient=tkinter.HORIZONTAL, length=100, mode='indeterminate')
+        self.progress.pack()
         progress_frame.pack()
 
+        self.update_controller = UpdateController(self, root)
+
     def on_update_clicked(self):
-        print("Update clicked: " + self.last_coin_entry.get())
-        messagebox.showinfo("Update success", "Crypto successfully updated!")
+        last_good_coin = self.last_coin_entry.get()
+        print("Update clicked: " + last_good_coin)
+        self.progress['value'] = 100
+        self.update_controller.update(last_good_coin)
+
+    def show_success(self):
+        self.progress['value'] = 0
+        messagebox.showinfo("Generate success", "Crypto successfully generated!")
