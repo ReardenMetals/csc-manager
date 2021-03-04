@@ -1,22 +1,26 @@
 import tkinter
-from tkinter import ttk
 
+from controller.coin_checker_controller import CoinCheckerController
+from keygen.crypto_coin_factory import CoinFactory
 from ui.footer_widget import FooterWidget
 from ui.header_widget import HeaderWidget
 
-class CoinCheckerWidget:
-    def __init__(self, coin_checker_frame, currencies=None, on_qr_code_scanned=None, on_currency_selected=None, on_refreshed=None):
 
+class CoinCheckerWidget:
+    def __init__(self, coin_checker_frame):
         self.coin_checker_frame = coin_checker_frame
 
         top_frame = tkinter.Frame(self.coin_checker_frame, borderwidth=3)
 
+        currencies = CoinFactory.get_available_currencies()
         self.currencies = currencies
+
+        self.coin_checker_controller = CoinCheckerController(self, coin_checker_frame)
 
         self.header_widget = HeaderWidget(top_frame,
                                           currencies=self.currencies,
-                                          on_currency_selected=on_currency_selected,
-                                          on_refreshed=on_refreshed)
+                                          on_currency_selected=self.coin_checker_controller.on_currency_selected,
+                                          on_refreshed=self.coin_checker_controller.on_refreshed)
         top_frame.pack(fill=tkinter.X)
 
         bottom_frame_width = 650
@@ -25,8 +29,11 @@ class CoinCheckerWidget:
         bottom_frame = tkinter.Frame(self.coin_checker_frame, height=bottom_frame_height, width=bottom_frame_width,
                                      borderwidth=3)
         self.footer_widget = FooterWidget(bottom_frame, frame_width=bottom_frame_width,
-                                          frame_height=bottom_frame_height, on_qr_code_scanned=on_qr_code_scanned)
+                                          frame_height=bottom_frame_height,
+                                          on_qr_code_scanned=self.coin_checker_controller.on_qr_code_scanned)
         bottom_frame.pack(fill=tkinter.BOTH, expand=True)
+
+        self.coin_checker_controller.init()
 
     def set_currency(self, currency):
         self.footer_widget.set_currency(currency)
