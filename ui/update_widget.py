@@ -12,7 +12,7 @@ class UpdateWidget:
         last_coin_frame.pack()
 
         btn_frame = tkinter.Frame(root, pady=15)
-        update_btn = tkinter.Button(btn_frame, text="Update", width=20, height=3)
+        update_btn = tkinter.Button(btn_frame, text="Update", width=20, height=2)
         update_btn.config(command=self.on_update_clicked)
         update_btn.pack()
         btn_frame.pack()

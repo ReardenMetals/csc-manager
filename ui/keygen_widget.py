@@ -2,6 +2,7 @@ import tkinter
 from tkinter import ttk, messagebox
 from tkinter.ttk import Progressbar
 
+from controller.keygen_controller import KeygenController
 from keygen.crypto_coin_factory import CoinFactory
 
 
@@ -38,17 +39,18 @@ class KeygenWidget:
         laser_frame.pack()
 
         btn_frame = tkinter.Frame(root, pady=15)
-        generate_btn = tkinter.Button(btn_frame, text="Generate", width=20, height=3)
+        generate_btn = tkinter.Button(btn_frame, text="Generate", width=20, height=2)
         generate_btn.config(command=self.on_generate_clicked)
         generate_btn.pack()
         btn_frame.pack()
 
         # Progress bar widget
         progress_frame = tkinter.Frame(root)
-        progress = Progressbar(progress_frame, orient=tkinter.HORIZONTAL, length=100, mode='indeterminate')
-        progress['value'] = 100
-        progress.pack()
+        self.progress = Progressbar(progress_frame, orient=tkinter.HORIZONTAL, length=100, mode='indeterminate')
+        self.progress.pack()
         progress_frame.pack()
+
+        self.keygen_controller = KeygenController(self, root)
 
     def on_generate_clicked(self):
         crypto_chosen = self.crypto_chosen.get()
@@ -58,5 +60,9 @@ class KeygenWidget:
         print("Crypto chosen: " + crypto_chosen)
         print("Laser chosen: " + chosen_laser)
         print("Count: " + count)
-#         https://pythonspot.com/tk-message-box/
+        self.progress['value'] = 100
+        self.keygen_controller.generate_keys(count=count, coin=crypto_chosen, laser=chosen_laser)
+
+    def show_success(self):
+        self.progress['value'] = 0
         messagebox.showinfo("Generate success", "Crypto successfully generated!")

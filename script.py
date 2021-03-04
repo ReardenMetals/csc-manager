@@ -63,7 +63,7 @@ def default_input(message, defaultVal):
     if defaultVal:
         return input("%s [%s] : " % (message, defaultVal)) or defaultVal
     else:
-        return input("%s " % (message))
+        return input("%s " % message)
 
 
 def init():
@@ -94,9 +94,6 @@ def init():
             print("Iterator count should be > 0")
     except Exception as e:
         print(e)
-        # print "{} is not supported yet".format(coin)
-        # print "Usage python script.py <number_of_wallets> <file_name.csv> <coin>"
-        # print "Usage python script.py 10 wallets.csv BTC"
 
 
 if __name__ == "__main__":
