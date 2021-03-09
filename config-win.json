@@ -1,7 +1,7 @@
 {
-  "base_file_name": "C:\\Users\\laser\\Desktop\\address.csv",
-  "asset_id_file_name": "C:\\Users\\laser\\Desktop\\asset_id.txt",
-  "private_file_name": "C:\\Users\\laser\\Desktop\\private.txt",
-  "public_file_name": "C:\\Users\\laser\\Desktop\\public.txt",
-  "sequence_file_name": "C:\\Users\\laser\\Desktop\\sequence.txt"
+  "base_file_name": "C:\\Users\\laser\\Desktop\\keypair.txt",
+  "asset_id_file_name": "C:\\Users\\laser\\Desktop\\snip.txt",
+  "private_file_name": "C:\\Users\\laser\\Desktop\\key.txt",
+  "public_file_name": "C:\\Users\\laser\\Desktop\\labels.txt",
+  "sequence_file_name": "C:\\Users\\laser\\Desktop\\numbers.txt"
 }
