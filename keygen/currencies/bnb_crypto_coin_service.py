@@ -25,3 +25,6 @@ class BnbCoinService(CoinService):
         addr = Bip44.FromExtendedKey(private_key, Bip44Coins.BINANCE_COIN)
         address = addr.PublicKey().ToAddress()
         return CryptoCoin(address, private_key)
+
+    def generate_asset_id(self, coin):
+        return coin.address[4:10]
