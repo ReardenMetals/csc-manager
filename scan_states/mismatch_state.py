@@ -16,4 +16,4 @@ class MismatchState(ScanState):
 
     async def delay_task(self):
         await self.context.sleep(2000)
-        self.change_state(States.SCAN_COIN_STATE)
+        self.change_state(States.SCAN_STICKER_STATE)

@@ -11,6 +11,7 @@ class ScanStickerState(ScanState):
     def init_state(self):
         super().init_state()
         self.context.set_action_title("Scan Sticker")
+        self.context.show_coin_info()
 
     def on_qr_code_scanned(self, qr_code_text):
         super().on_qr_code_scanned(qr_code_text)

@@ -14,8 +14,7 @@ class ScanCoinState(ScanState):
         super().init_state()
         self.context.set_action_title("Scan Coin")
         self.context.show_none()
-        self.context.set_fetched_address(None)
-        self.context.set_coin_private_key(None)
+        self.context.clear_data()
 
     def on_qr_code_scanned(self, qr_code_text):
         super().on_qr_code_scanned(qr_code_text)
@@ -29,19 +28,24 @@ class ScanCoinState(ScanState):
             self.private_key_text = private_key_text
             print('private_key:', self.private_key_text)
             private_key = self.private_key_text
+            self.context.set_coin_private_key(private_key)
             self.context.show_coin_private_key(private_key)
             self.context.start_async(self.load_address_from_private_async(private_key))
 
     async def load_address_from_private_async(self, private_key):
         address, asset_id, error = await self.context.run_in_thread(lambda: self.load_address_and_id(private_key))
         if error is None:
-            print('address, asset_id')
-            print(address, asset_id)
+            print('address, asset_id, private_key')
+            print(address, asset_id, private_key)
             if address is not None and asset_id is not None:
+                self.context.set_fetched_address(address)
+                self.context.set_fetched_snip(asset_id)
                 self.context.show_coin_details_info(private_key, asset_id, address)
                 self.context.play_success_song()
                 self.change_state(States.SCAN_STICKER_STATE)
         else:
+            self.context.set_fetched_address('error')
+            self.context.set_fetched_snip('error')
             self.context.show_coin_details_info('error', 'error', 'error')
             self.change_state(States.SCAN_COIN_ERROR_STATE)
 

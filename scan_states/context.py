@@ -5,6 +5,9 @@ class Context:
     def __init__(self):
         pass
 
+    def clear_data(self):
+        pass
+
     def change_state(self, new_state: States):
         pass
 
@@ -15,6 +18,9 @@ class Context:
         pass
 
     def set_coin_private_key(self, private_key):
+        pass
+
+    def set_fetched_snip(self, snip):
         pass
 
     def set_fetched_address(self, fetched_address):
@@ -33,6 +39,9 @@ class Context:
         pass
 
     def show_incorrect(self):
+        pass
+
+    def show_coin_info(self):
         pass
 
     def show_coin_details_info(self, private_key, snip, address):
