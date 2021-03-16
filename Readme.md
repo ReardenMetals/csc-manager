@@ -1,138 +1,32 @@
-Keygen Md
+# Introduction to Cold Storage Coins Manager
+
+This is Python desktop offline application for generating & validating Cold Storage Coins of different currencies: BTC, BCH, CLUB, DASH, LTC, ETH, BSV, DOGE, XRP, XMR, BNB, EOS, POTE, WAVES, USDT. Also added implementation of AWS Lambda keygen.
+
+# CSC Manager Installation
+
+This application is working with Python 3.8.6 (pip 20.2.1)
+
+Python-3.8.6 download link: https://www.python.org/downloads/release/python-386/
+
+## Linux Install
 
 Install needed dependencies:
 
-    pip install --target ./package pybitcoin pywaves cashaddress ecdsa pysha3
-    pip install ph4-moneropy
-
-Run the script:
-
-    python3.8 script.py
-
-Linux install:
-
-    sudo -i
-    sudo add-apt-repository universe
-    sudo chmod -R a+rX,u+w /var/cache/app-info/xapian/default
-    exit
-    sudo apt-get update
-    sudo apt install python-pip
-    pip install --upgrade --user pip
-    pip install pybitcoin==0.9.9
-    pip install urllib3==1.21.1
-    pip install chardet==3.0.2
-    pip install pysha3==1.0.2
-    pip install pywaves
-    pip install bip_utils
-    pip install aioeos
-    pip install monero
-    pip install cashaddress
-    pip install Pillow
-    pip install opencv-python
-    pip install pyzbar
-    pip install imutils
-    pip install asynctkinter
-    pip install pygame
-
-Change log:
-
-v7
- - add Monero support
-
-v6
- - added WAVES support
- - added support for PotCoin
- - manually added "pw.setOffline()" to line 87 for WAVES offline generation
-
-v5
- - received 02 Feb 2018
- - includes support for Ethereum
- - includes support for Monero
- - changes compression back to TRUE
- - removes 1st and 4th columns from output file (HEX, PASSPHRASE)
-
-
-v4b
- - adds line "_wif_version_byte = 0x99" to fix clubcoin compatibility issue
-
-script-v4a.py  (LIVE VERSION)
- - CURRENT WORKING SCRIPT
-
-Dependencies version needed:
-
-    base58==0.2.5 +
-    bitcoin==1.1.42 +
-    bitmerchant==0.1.8 +
-    cachetools==2.1.0 down
-    certifi==2018.4.16 down
-    chardet==3.0.4 down
-    commontools==0.1.0 +
-    ecdsa==0.13 down
-    idna==2.7 down
-    keychain==0.14.2.0 +
-    keylib==0.1.1 +
-    pkg-resources==0.0.0 ?
-    pybitcoin==0.9.9 +
-    pyblake2==1.1.2 +
-    python-axolotl-curve25519==0.4.1.post2 +
-    python-bitcoinrpc==0.1+
-    PyWaves==0.8.15 +
-    requests==2.19.1 down
-    sha3==0.2.1 ?
-    six==1.11.0 down
-    urllib3==1.23 down
-    utilitybelt==0.2.6 +
-
-For a Rob:
-
-    install pywaves:
-    - 1) Install python-2.7.18.msi(when installing add python.exe to Path) and VCForPython27.msi
-    - 2) Copy the file stdint.h and paste it in C:\Users\laser\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\
-    - 3) Copy folder MinGW in C:\
-    - 4) Add C:\MinGW\bin to environment varaibles
-    - 5) Copy the file distutils.cfg and paste it in C:\python27\Lib\distutils
-    - 6) Open a new instance of Command prompt: open folder python-axolotl-curve25519-master and run command python setup.py install
-    - 7) Then open folder python-axolotl-master and run command python setup.py install
-
-For a developer:
+    pip pip install -r requirements.txt
     
-    install project:
-    - 1) Install python-2.7.18.msi(when installing add python.exe to Path) and VCForPython27.msi
-    - 2) Copy the file stdint.h and paste it in C:\Users\Administrator\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\include\
-    - 3) Install mingw-get-setup.exe
-    - 4) Add C:\MinGW\bin to environment varaibles
-    - 5) Create a new file named distutils.cfg, put this new file in the Lib/distutils folder of your python installation e.g C:\python27\Lib\distutils
-        inside this file add these 2 lines and save:
-            [build]
-            compiler=mingw32
-    - 6) Open a new instance of Command prompt and run this commands: mingw-get.exe install gcc
-    - 7) run this commands: mingw-get.exe install zlib
-    - 8) Open project in PyCharm
-    - 9) in terminal run commands:open folder python-axolotl-curve25519-master and run command python setup.py install,
-        then open folder python-axolotl-master and run command python setup.py install
-    - 11) in terminal run commands: pip install --target ./package pybitcoin PyWaves==0.8.15 cashaddress ecdsa pysha3
-    pip install ph4-moneropy
+Change application config ("config.json" in root folder) to your file pathes:
+    
+    {
+      "base_file_name": "./output/keypair.txt",
+      "asset_id_file_name": "./output/snip.txt",
+      "private_file_name": "./output/key.txt",
+      "public_file_name": "./output/labels.txt",
+      "sequence_file_name": "./output/numbers.txt"
+    }
 
-Coin Checker:
-Python 3.8.6
+## Windows install
 
-Python Dependencies required:
-
-    pip install opencv-python
-    pip install Pillow
-    sudo apt install python3-tk
-    pip install pyzbar
-    pip install bip_utils
-    pip install cashaddress
-    pip install aioeos
-    pip install imutils
-    pip install asynctkinter
-    pip install pygame
-    pip install base58==2.0.0 (for EOS)
-    pip install PyWaves==0.8.15
-    pip install bitsv
-    pip install pywallet
-    pip install monero
+Download & Install Visual studio build tool (or Visual Studio 19): https://visualstudio.microsoft.com/visual-cpp-build-tools/
 
 Windows dependencies:
     
@@ -140,3 +34,72 @@ Windows dependencies:
     Microsoft Visual C++ 14.0
 
     vs_buildtools_xxxxx.exe  --layout c:\offlineBuildTool --lang en-us
+    
+Install needed dependencies:
+
+    pip pip install -r requirements.txt
+    
+Change application config ("config.json" in root folder) to your file pathes:
+
+    {
+      "base_file_name": "C:\\Users\\laser\\Desktop\\keypair.txt",
+      "asset_id_file_name": "C:\\Users\\laser\\Desktop\\snip.txt",
+      "private_file_name": "C:\\Users\\laser\\Desktop\\key.txt",
+      "public_file_name": "C:\\Users\\laser\\Desktop\\labels.txt",
+      "sequence_file_name": "C:\\Users\\laser\\Desktop\\numbers.txt"
+    }
+    
+Run CSC Manager desktop application:
+
+    python main.py
+    
+Run CLI Keygen:
+
+    python script.py
+    
+Run CLI Update:
+
+    python update.py
+
+# AWS Lambda keygen installation
+    
+Install needed dependencies:
+    
+    pip install --target ../lambda-package bip_utils==1.7.0 bitsv==0.11.5 cashaddress==1.0.6 aioeos==1.0.2 \
+        pywallet==0.1.0 monero==0.8 PyWaves==0.8.15 base58==2.0.0
+        
+Preparing package for AWS Lambda:
+
+    zip -r9 ~/lambda.zip .
+    zip -g ./lambda.zip ./aws_lambda.py
+    
+Upload zip archive to AWS Lambda.
+
+# For a developers:
+
+## Add new Crypto currency support
+    
+* Create new class, which implements CoinService (keygen/crypto_coin_service.py)
+* Register new class in CoinCheckerFactory (keygen/crypto_checker_factory.py)
+
+        @staticmethod
+        def get_coin_service(currency):
+            ...
+            if currency == "EOS":
+                return EosCoinService() 
+            ...
+* Add your currency in CoinCheckerFactory.get_available_currencies
+* Add currency icon in ./resources/img/coin-{YOURCOIN}.png
+    
+# Donations
+
+If you'd like to donate something:
+
+* BTC: 1LEG6G9Qos9GME4vwS1K9Kypy47Vv1bNds
+* ETH: 0x2a1a059a580b044cbdfbba1a4f0fcfe79d724c18
+* LTC: LUZXdc4moJ7wWu5fEqbsR9iYJDBtemEJRG
+* BCH: qqhwmp8th2wazcm9pcvnt6nl05vh9w80gu0n4ar6r4
+
+Thank you very much in advance for your support.
+
+# License
