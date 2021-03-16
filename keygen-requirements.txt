@@ -1,0 +1,8 @@
+pip install bip_utils==1.7.0
+pip install bitsv==0.11.5
+pip install cashaddress==1.0.6
+pip install aioeos==1.0.2
+pip install pywallet==0.1.0
+pip install monero==0.8
+pip install PyWaves==0.8.15
+pip install base58==2.0.0 #Override for EOS
