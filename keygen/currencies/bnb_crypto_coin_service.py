@@ -13,7 +13,7 @@ class BnbCoinService(CoinService):
         seed_bytes = Bip39SeedGenerator(mnemonic).Generate()
 
         # Generate BIP44 master keys
-        bip_obj_mst = Bip44.FromSeed(seed_bytes, Bip44Coins.BINANCE_COIN)
+        bip_obj_mst = Bip44.FromSeed(seed_bytes, Bip44Coins.BINANCE_CHAIN)
 
         address = bip_obj_mst.PublicKey().ToAddress()
         wif = bip_obj_mst.PrivateKey().Raw().ToHex()
