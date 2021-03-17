@@ -22,7 +22,7 @@ class BnbCoinService(CoinService):
         return CryptoCoin(address, wif, seed)
 
     def get_coin(self, private_key):
-        key_pair = Bip44.FromAddressPrivKey(bytes.fromhex(private_key), Bip44Coins.BINANCE_COIN)
+        key_pair = Bip44.FromAddressPrivKey(bytes.fromhex(private_key), Bip44Coins.BINANCE_CHAIN)
         address = key_pair.PublicKey().ToAddress()
         return CryptoCoin(address, private_key)
 
