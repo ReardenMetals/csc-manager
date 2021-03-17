@@ -23,7 +23,19 @@ Change application config ("config.json" in root folder) to your file pathes:
       "public_file_name": "./output/labels.txt",
       "sequence_file_name": "./output/numbers.txt"
     }
+    
+Run CSC Manager desktop application:
 
+    python csc-manager.py
+    
+Run CLI Keygen:
+
+    python keygen.py
+    
+Run CLI Update:
+
+    python update.py
+    
 ## Windows install
 
 Download & Install Visual studio build tool (or Visual Studio 19): https://visualstudio.microsoft.com/visual-cpp-build-tools/
@@ -37,7 +49,7 @@ Windows dependencies:
     
 Install needed dependencies:
 
-    pip pip install -r requirements.txt
+    pip install -r requirements.txt
     
 Change application config ("config.json" in root folder) to your file pathes:
 
@@ -51,27 +63,28 @@ Change application config ("config.json" in root folder) to your file pathes:
     
 Run CSC Manager desktop application:
 
-    python main.py
+    ./csc-manager.bat
     
 Run CLI Keygen:
 
-    python script.py
+    ./keygen.bat
     
 Run CLI Update:
 
-    python update.py
+    ./update.bat
 
 # AWS Lambda keygen installation
     
 Install needed dependencies:
     
-    pip install --target ../lambda-package bip_utils==1.7.0 bitsv==0.11.5 cashaddress==1.0.6 aioeos==1.0.2 \
+    pip install --target ~/lambda-package bip_utils==1.7.0 bitsv==0.11.5 cashaddress==1.0.6 aioeos==1.0.2 \
         pywallet==0.1.0 monero==0.8 PyWaves==0.8.15 base58==2.0.0
         
 Preparing package for AWS Lambda:
 
+    cp -r ~/csc-manager/keygen ~/lambda-package/
     zip -r9 ~/lambda.zip .
-    zip -g ./lambda.zip ./aws_lambda.py
+    zip -g ~/lambda.zip ~/csc-manager/aws_lambda.py
     
 Upload zip archive to AWS Lambda.
 
