@@ -3,7 +3,9 @@ from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Co
 from keygen.crypto_coin import CryptoCoin
 from keygen.crypto_coin_service import CoinService
 
-
+# Wallet validator: http://ripplerm.github.io/ripple-wallet/
+# https://support.exodus.com/article/110-why-does-ripple-have-a-minimum-balance#access
+# https://support.exodus.com/article/925-everything-you-need-to-know-about-the-recovery-phrase
 class RippleCoinService(CoinService):
 
     def generate(self):
