@@ -44,10 +44,10 @@ class Context:
     def show_coin_info(self):
         pass
 
-    def show_coin_details_info(self, private_key, snip, address):
+    def show_error(self):
         pass
 
-    def show_coin_private_key(self, private_key):
+    def show_coin_private_key(self):
         pass
 
     def play_success_song(self):
