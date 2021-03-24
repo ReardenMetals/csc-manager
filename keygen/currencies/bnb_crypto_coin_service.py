@@ -2,6 +2,8 @@ from keygen.crypto_coin import CryptoCoin
 from keygen.crypto_coin_service import CoinService
 from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins
 
+import re
+
 
 class BnbCoinService(CoinService):
 
@@ -27,4 +29,4 @@ class BnbCoinService(CoinService):
         return CryptoCoin(address, private_key)
 
     def generate_asset_id(self, coin):
-        return coin.address[4:10]
+        return re.search('^bnb1(\\w{6}).+$', coin.address).group(1)
