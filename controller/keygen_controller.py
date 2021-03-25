@@ -14,11 +14,11 @@ class KeygenController:
     async def generate_keys_async(self, count, coin, laser):
         await self.run_in_thread(lambda: generate_keys(count, coin, laser))
         print("self.root.show_success()")
-        self.root.show_success()
+        self.window.after(10, lambda: self.root.show_success())
 
     def start_async(self, task):
         at.start(task)
 
     def run_in_thread(self, func):
-        return at.run_in_thread(func, after=self.window.after)
+        return at.run_in_thread(func, after=self.window.after, polling_interval=10, daemon=True)
 

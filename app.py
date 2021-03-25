@@ -15,4 +15,4 @@ class App(Context):
         sys.stdout = StdoutRedirector(self)
 
     def log(self, log):
-        self.main_widget.add_log(log)
+        self.window.after(10, lambda: self.main_widget.add_log(log))

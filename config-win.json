@@ -3,5 +3,10 @@
   "asset_id_file_name": "C:\\Users\\laser\\Desktop\\snip.txt",
   "private_file_name": "C:\\Users\\laser\\Desktop\\key.txt",
   "public_file_name": "C:\\Users\\laser\\Desktop\\labels.txt",
-  "sequence_file_name": "C:\\Users\\laser\\Desktop\\numbers.txt"
+  "sequence_file_name": "C:\\Users\\laser\\Desktop\\numbers.txt",
+  "lasers": [
+    "A",
+    "B",
+    "C"
+  ]
 }

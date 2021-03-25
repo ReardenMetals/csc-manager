@@ -3,5 +3,10 @@
   "asset_id_file_name": "./output/snip.txt",
   "private_file_name": "./output/key.txt",
   "public_file_name": "./output/labels.txt",
-  "sequence_file_name": "./output/numbers.txt"
+  "sequence_file_name": "./output/numbers.txt",
+  "lasers": [
+    "A",
+    "B",
+    "C"
+  ]
 }
