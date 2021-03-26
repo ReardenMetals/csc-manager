@@ -1,5 +1,5 @@
 @ECHO OFF
 setlocal
-venv\Scripts\python script.py
+venv\Scripts\python keygen.py
 endlocal
 pause

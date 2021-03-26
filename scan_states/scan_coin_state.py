@@ -29,7 +29,7 @@ class ScanCoinState(ScanState):
             print('private_key:', self.private_key_text)
             private_key = self.private_key_text
             self.context.set_coin_private_key(private_key)
-            self.context.show_coin_private_key(private_key)
+            self.context.show_coin_private_key()
             self.context.start_async(self.load_address_from_private_async(private_key))
 
     async def load_address_from_private_async(self, private_key):
@@ -40,13 +40,13 @@ class ScanCoinState(ScanState):
             if address is not None and asset_id is not None:
                 self.context.set_fetched_address(address)
                 self.context.set_fetched_snip(asset_id)
-                self.context.show_coin_details_info(private_key, asset_id, address)
+                self.context.show_coin_info()
                 self.context.play_success_song()
                 self.change_state(States.SCAN_STICKER_STATE)
         else:
             self.context.set_fetched_address('error')
             self.context.set_fetched_snip('error')
-            self.context.show_coin_details_info('error', 'error', 'error')
+            self.context.show_error()
             self.change_state(States.SCAN_COIN_ERROR_STATE)
 
     def load_address_and_id(self, private_key):

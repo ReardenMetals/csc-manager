@@ -21,6 +21,3 @@ class WavesCoinService(CoinService):
         private_key = addr.privateKey.decode("utf-8")
         seed = addr.seed
         return CryptoCoin(address, private_key, seed)
-
-    def get_csv_header(self):
-        return "Address,Public Key,Private Key,Seed\n"

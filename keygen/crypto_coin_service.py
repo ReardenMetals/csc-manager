@@ -1,4 +1,5 @@
 from abc import abstractmethod
+import re
 
 
 class CoinService:
@@ -11,11 +12,11 @@ class CoinService:
         return
 
     def generate_asset_id(self, coin):
-        return coin.address[1:7]
+        return re.search('^\\w(\\w{6}).+$', coin.address).group(1)
 
     def get_address_and_id(self, private_key):
         coin = self.get_coin(private_key)
-        if (coin):
+        if coin:
             asset_id = self.generate_asset_id(coin)
             address = coin.address
             return address, asset_id

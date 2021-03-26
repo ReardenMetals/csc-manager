@@ -25,4 +25,7 @@ class XmrCoinService(CoinService):
         return CryptoCoin(addr, sk, seed)
 
     def get_csv_header(self):
-        return "Address,Secret View Key,Secret Spend Key,Secret Mnemonic\n"
+        return "Address,Secret Mnemonic\n"
+
+    def format(self, coin):
+        return "{},{}\n".format(coin.address, coin.wif)

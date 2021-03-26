@@ -5,10 +5,20 @@ from tkinter.ttk import Progressbar
 from controller.keygen_controller import KeygenController
 from keygen.crypto_coin_factory import CoinFactory
 
+import json
+
+
+def load_lasers():
+    with open('config.json') as json_file:
+        config_json = json.load(json_file)
+        lasers = config_json["lasers"]
+    return lasers
+
 
 class KeygenWidget:
 
     def __init__(self, root):
+        self.root = root
         self.currencies = CoinFactory.get_available_currencies()
 
         combo_frame = tkinter.Frame(root, pady=15)
@@ -28,7 +38,7 @@ class KeygenWidget:
         self.count_spin.pack()
         count_frame.pack()
 
-        self.lasers = ["A", "B", "C"]
+        self.lasers = load_lasers()
         laser_frame = tkinter.Frame(root, pady=15)
         tkinter.Label(laser_frame, text="Select laser").pack()
         # Adding combobox drop down list
@@ -64,5 +74,6 @@ class KeygenWidget:
         self.keygen_controller.generate_keys(count=count, coin=crypto_chosen, laser=chosen_laser)
 
     def show_success(self):
+        messagebox.showinfo("Generate success", "Crypto successfully generated!", parent=self.root)
         self.progress['value'] = 0
-        messagebox.showinfo("Generate success", "Crypto successfully generated!")
+        self.root.update()

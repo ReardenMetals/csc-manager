@@ -91,10 +91,11 @@ class CoinCheckerController(Context):
         address = self.fetched_address
         self.root.show_coin_details_info(private_key=private_key, snip=snip, address=address)
 
-    def show_coin_details_info(self, private_key, snip, address):
-        self.root.show_coin_details_info(private_key, snip, address)
+    def show_error(self):
+        self.root.show_coin_details_info('error', 'error', 'error')
 
-    def show_coin_private_key(self, private_key):
+    def show_coin_private_key(self):
+        private_key = self.private_key
         self.root.show_coin_details_info(private_key, "...", "...")
 
     def play_success_song(self):

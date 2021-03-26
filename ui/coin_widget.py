@@ -1,7 +1,7 @@
 import tkinter
 from PIL import Image, ImageTk
 
-from coin_img_util import CoinImageUtil
+from app_tools.coin_img_util import CoinImageUtil
 
 
 class CoinWidget:

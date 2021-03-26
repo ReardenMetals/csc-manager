@@ -33,10 +33,9 @@ def generate_keys(count, coin, laser):
 def save_coins_list(crypto_keygen_service, coin_list=[], filename='address.csv'):
     with open(filename, 'w') as file:
         file.write(crypto_keygen_service.get_csv_header())
-        for crypto_keygen_service in coin_list:
-            line = "{},{},{}\n".format(crypto_keygen_service.address, crypto_keygen_service.wif,
-                                       crypto_keygen_service.seed)
-            print("Address.csv {}/{}".format(coin_list.index(crypto_keygen_service), len(coin_list)))
+        for coin in coin_list:
+            line = crypto_keygen_service.format(coin)
+            print("Address.csv {}/{}".format(coin_list.index(coin), len(coin_list)))
             file.write(line)
         file.flush()
         file.close()

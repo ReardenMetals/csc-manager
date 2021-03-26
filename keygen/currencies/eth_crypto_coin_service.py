@@ -6,6 +6,8 @@ from ecdsa import SigningKey, SECP256k1
 import sha3
 import codecs
 
+import re
+
 
 class EthCoinService(CoinService):
 
@@ -29,5 +31,4 @@ class EthCoinService(CoinService):
         return CryptoCoin("0x{}".format(address), priv_hex)
 
     def generate_asset_id(self, coin):
-        coin_address = coin.address
-        return coin_address[2:8]
+        return re.search('^0x(\\w{6}).+$', coin.address).group(1)

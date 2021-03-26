@@ -1,6 +1,5 @@
 @ECHO OFF
 setlocal
-venv\Scripts\python main.py
-.py
+venv\Scripts\python csc-manager.py
 endlocal
 pause
