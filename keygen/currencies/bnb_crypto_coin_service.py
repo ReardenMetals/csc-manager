@@ -18,13 +18,15 @@ class BnbCoinService(CoinService):
         bip_obj_mst = Bip44.FromSeed(seed_bytes, Bip44Coins.BINANCE_CHAIN)
 
         address = bip_obj_mst.PublicKey().ToAddress()
-        wif = bip_obj_mst.PrivateKey().Raw().ToHex()
+        wif = mnemonic
         seed = mnemonic
 
         return CryptoCoin(address, wif, seed)
 
     def get_coin(self, private_key):
-        key_pair = Bip44.FromAddressPrivKey(bytes.fromhex(private_key), Bip44Coins.BINANCE_CHAIN)
+        mnemonic = private_key
+        seed_bytes = Bip39SeedGenerator(mnemonic).Generate()
+        key_pair = Bip44.FromSeed(seed_bytes, Bip44Coins.BINANCE_CHAIN)
         address = key_pair.PublicKey().ToAddress()
         return CryptoCoin(address, private_key)
 
