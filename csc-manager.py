@@ -5,7 +5,7 @@ from app import App
 
 def main():
     tk = tkinter.Tk()
-    App("CSC Manager 1.0.1", tk)
+    App("CSC Manager 1.0.4", tk)
     tk.mainloop()
 
 
