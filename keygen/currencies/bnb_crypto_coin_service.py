@@ -1,6 +1,7 @@
 from keygen.crypto_coin import CryptoCoin
 from keygen.crypto_coin_service import CoinService
 from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins
+import binascii
 
 import re
 
@@ -24,7 +25,8 @@ class BnbCoinService(CoinService):
         return CryptoCoin(address, wif, seed)
 
     def get_coin(self, private_key):
-        key_pair = Bip44.FromAddressPrivKey(bytes.fromhex(private_key), Bip44Coins.BINANCE_CHAIN)
+        private_key_bytes = binascii.unhexlify(private_key)
+        key_pair = Bip44.FromAddressPrivKey(private_key_bytes, Bip44Coins.BINANCE_CHAIN)
         address = key_pair.PublicKey().ToAddress()
         return CryptoCoin(address, private_key)
 
