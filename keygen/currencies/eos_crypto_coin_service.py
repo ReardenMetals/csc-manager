@@ -2,6 +2,7 @@ from keygen.crypto_coin import CryptoCoin
 from keygen.crypto_coin_service import CoinService
 from aioeos.keys import EosKey
 
+import re
 
 class EosCoinService(CoinService):
 
@@ -18,3 +19,6 @@ class EosCoinService(CoinService):
         wif = eos.to_wif()
         seed = ''
         return CryptoCoin(address, wif, seed)
+
+    def generate_asset_id(self, coin):
+        return re.search('^EOS(\\w{6}).+$', coin.address).group(1)
