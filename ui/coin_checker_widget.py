@@ -32,8 +32,11 @@ class CoinCheckerWidget:
                                           frame_height=bottom_frame_height,
                                           on_qr_code_scanned=self.coin_checker_controller.on_qr_code_scanned)
         bottom_frame.pack(fill=tkinter.BOTH, expand=True)
+        self.bottom_frame = bottom_frame
 
         self.coin_checker_controller.init()
+        coin_checker_frame.out_callback = self.release_camera
+        coin_checker_frame.in_callback = self.init_camera
 
     def set_currency(self, currency):
         self.footer_widget.set_currency(currency)
@@ -52,3 +55,13 @@ class CoinCheckerWidget:
 
     def show_coin_details_info(self, private_key, snip, address):
         self.footer_widget.show_coin_details_info(private_key, snip, address)
+
+    def init_camera(self):
+        print("init coin_checker camera")
+        self.footer_widget.camera_widget.resume()
+
+    def release_camera(self):
+        print("release coin_checker camera")
+        self.footer_widget.camera_widget.pause()
+
+

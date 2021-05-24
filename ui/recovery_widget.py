@@ -1,0 +1,47 @@
+import tkinter
+
+from controller.recovery_controller import RecoveryController
+from keygen.crypto_coin_factory import CoinFactory
+from ui.header_widget import HeaderWidget
+from ui.recovery.footer_widget import FooterWidget
+
+
+class RecoveryWidget:
+    def __init__(self, recovery_frame):
+        self.recovery_frame = recovery_frame
+        top_frame = tkinter.Frame(self.recovery_frame, borderwidth=3)
+
+        currencies = CoinFactory.get_available_currencies()
+        self.currencies = currencies
+
+        self.recovery_controller = RecoveryController(self, recovery_frame)
+
+        self.header_widget = HeaderWidget(top_frame,
+                                          currencies=self.currencies,
+                                          on_currency_selected=self.recovery_controller.on_currency_selected,
+                                          on_refreshed=self.recovery_controller.on_refreshed)
+
+        top_frame.pack(fill=tkinter.X)
+
+        bottom_frame_width = 650
+        bottom_frame_height = 350
+
+        bottom_frame = tkinter.Frame(self.recovery_frame, height=bottom_frame_height, width=bottom_frame_width,
+                                     borderwidth=3)
+
+        self.footer_widget = FooterWidget(bottom_frame, frame_width=bottom_frame_width,
+                                          frame_height=bottom_frame_height,
+                                          on_qr_code_scanned=self.recovery_controller.on_qr_code_scanned)
+        bottom_frame.pack(fill=tkinter.BOTH, expand=True)
+
+        self.recovery_controller.init()
+        recovery_frame.out_callback = self.release_camera
+        recovery_frame.in_callback = self.init_camera
+
+    def init_camera(self):
+        print("init recovery camera")
+        self.footer_widget.camera_widget.resume()
+
+    def release_camera(self):
+        print("release recovery camera")
+        self.footer_widget.camera_widget.pause()

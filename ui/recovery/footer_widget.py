@@ -2,7 +2,7 @@ import tkinter
 from tkinter import LEFT, RIGHT
 
 from ui.camera_widget import CameraWidget
-from ui.coin_widget import CoinWidget
+from ui.recovery.coin_widget import CoinWidget
 
 
 class FooterWidget:
@@ -20,7 +20,7 @@ class FooterWidget:
         self.camera_widget = CameraWidget(camera_frame=camera_frame,
                      width=camera_width,
                      height=camera_height,
-                     on_qr_scanned_callback=on_qr_code_scanned)
+                     on_qr_scanned_callback=on_qr_code_scanned, paused=True)
         camera_frame.pack(side=RIGHT)
 
     def set_currency(self, currency):
