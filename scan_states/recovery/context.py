@@ -11,6 +11,9 @@ class Context:
     def change_state(self, new_state: States):
         pass
 
+    def coins_add(self, coin, asset_id):
+        pass
+
     def get_fetched_address(self):
         pass
 
@@ -63,7 +66,4 @@ class Context:
         pass
 
     def sleep(self, milliseconds):
-        pass
-
-    def coins_add(self, coin, asset_id):
         pass

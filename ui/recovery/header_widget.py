@@ -10,6 +10,10 @@ class HeaderWidget:
         self.on_currency_selected = on_currency_selected
         self.on_refreshed = on_refreshed
         self.on_saved = on_saved
+
+        self.crypto_chosen = None
+        self.count_label = None
+
         self.init_ui()
 
     def init_ui(self):

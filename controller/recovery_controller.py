@@ -45,15 +45,15 @@ class RecoveryController(Context):
     def on_saved(self):
         self.start_async(self.save_async())
 
+    def on_qr_code_scanned(self, qr_code_text):
+        self.state.on_qr_code_scanned(qr_code_text)
+
     def select_currency(self, currency):
         self.currency = currency
         self.coin_service = CoinFactory.get_coin_service(self.currency)
         self.change_state(States.SCAN_COIN_STATE)
         self.root.set_currency(currency)
         print("Selected currency: ", self.currency)
-
-    def on_qr_code_scanned(self, qr_code_text):
-        self.state.on_qr_code_scanned(qr_code_text)
 
     def clear_data(self):
         self.fetched_address = None
@@ -64,6 +64,10 @@ class RecoveryController(Context):
         print("New state:", new_state)
         self.state = get_state(new_state, self)
         self.state.init_state()
+
+    def coins_add(self, coin, asset_id):
+        self.coins.append((coin, asset_id))
+        self.root.set_scanned_count(len(self.coins))
 
     def get_private_key(self):
         return self.private_key
@@ -123,18 +127,14 @@ class RecoveryController(Context):
     def sleep(self, milliseconds):
         return at.sleep(milliseconds, after=self.window.after)
 
-    def coins_add(self, coin, asset_id):
-        self.coins.append((coin, asset_id))
-        self.root.set_scanned_count(len(self.coins))
+    async def save_async(self):
+        print("Saving %s of coins", len(self.coins))
+        await self.run_in_thread(lambda: save_recovered_coins(self.coins))
+        print("self.root.show_success()")
+        self.root.show_success()
 
     @staticmethod
     def _play_song(file_name: str):
         music = pygame.mixer.music
         music.load(file_name)
         music.play()
-
-    async def save_async(self):
-        print("Saving %s of coins", len(self.coins))
-        await self.run_in_thread(lambda: save_recovered_coins(self.coins))
-        print("self.root.show_success()")
-        self.root.show_success()

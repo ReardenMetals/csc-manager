@@ -5,19 +5,19 @@ import json
 def save_recovered_coins(coins):
     recovered_file_name, recovered_keys_file_name = load_file_config()
 
-    print("Saving recovered public keys & asset IDs to file...")
+    print("Saving recovered public keys & asset IDs to file...\n")
     with open(recovered_file_name, 'w') as recovered_file:
         save_public_keys(coins, recovered_file)
         recovered_file.flush()
         recovered_file.close()
-        print("Recovered public keys & asset IDs saved to file!")
+        print("Recovered public keys & asset IDs saved to file!\n")
 
-    print("Saving recovered private keys to file...")
+    print("Saving recovered private keys to file...\n")
     with open(recovered_keys_file_name, 'w') as recovered_keys_file:
         save_private_keys(coins, recovered_keys_file)
         recovered_keys_file.flush()
         recovered_keys_file.close()
-        print("Recovered private keys saved to file!")
+        print("Recovered private keys saved to file!\n")
 
 
 def load_file_config():
