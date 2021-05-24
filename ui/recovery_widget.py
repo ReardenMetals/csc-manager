@@ -38,6 +38,24 @@ class RecoveryWidget:
         recovery_frame.out_callback = self.release_camera
         recovery_frame.in_callback = self.init_camera
 
+    def set_currency(self, currency):
+        self.footer_widget.set_currency(currency)
+
+    def set_action_title(self, title):
+        self.footer_widget.set_action_title(title)
+
+    def show_none(self):
+        self.footer_widget.show_none()
+
+    def show_correct(self):
+        self.footer_widget.show_correct()
+
+    def show_incorrect(self):
+        self.footer_widget.show_incorrect()
+
+    def show_coin_details_info(self, private_key, snip, address):
+        self.footer_widget.show_coin_details_info(private_key, snip, address)
+
     def init_camera(self):
         print("init recovery camera")
         self.footer_widget.camera_widget.resume()

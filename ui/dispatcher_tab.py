@@ -12,9 +12,9 @@ class DispatcherTab(tkinter.Frame):
     def on_visible_in(self, parent, id, str):
         if self.in_callback is not None:
             self.in_callback()
-        print('%s is %s' % (parent.tab(id, 'text'), str))
+        # print('%s is %s' % (parent.tab(id, 'text'), str))
 
     def on_visible_out(self, parent, id, str):
         if self.out_callback is not None:
             self.out_callback()
-        print('%s is %s' % (parent.tab(id, 'text'), str))
+        # print('%s is %s' % (parent.tab(id, 'text'), str))

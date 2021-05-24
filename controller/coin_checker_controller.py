@@ -27,8 +27,6 @@ class CoinCheckerController(Context):
 
         self.select_currency(self.currency)
 
-        pygame.mixer.init()
-
     def on_currency_selected(self, currency):
         self.select_currency(currency)
 
