@@ -31,11 +31,11 @@ class HeaderWidget:
 
         combo_frame.pack(side=tkinter.LEFT)
 
-        refresh_btn = tkinter.Button(self.frame, text="Refresh", font=('Arial', 12, 'bold'), width=15, height=5)
+        refresh_btn = tkinter.Button(self.frame, text="Refresh", font=('Arial', 8, 'bold'), width=10, height=2)
         refresh_btn.config(command=self.on_refresh_btn_clicked)
         refresh_btn.pack(side=tkinter.LEFT, padx=(0, 10), pady=(16, 0))
 
-        save_btn = tkinter.Button(self.frame, text="Save", font=('Arial', 12, 'bold'), width=15, height=5)
+        save_btn = tkinter.Button(self.frame, text="Save", font=('Arial', 8, 'bold'), width=10, height=2)
         save_btn.config(command=self.on_save_btn_clicked)
         save_btn.pack(side=tkinter.LEFT, padx=(0, 10), pady=(16, 0))
 
