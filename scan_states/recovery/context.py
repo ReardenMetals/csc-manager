@@ -64,3 +64,6 @@ class Context:
 
     def sleep(self, milliseconds):
         pass
+
+    def coins_add(self, coin, asset_id):
+        pass

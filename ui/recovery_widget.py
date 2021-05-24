@@ -2,8 +2,10 @@ import tkinter
 
 from controller.recovery_controller import RecoveryController
 from keygen.crypto_coin_factory import CoinFactory
-from ui.header_widget import HeaderWidget
+from ui.recovery.header_widget import HeaderWidget
 from ui.recovery.footer_widget import FooterWidget
+
+from tkinter import messagebox
 
 
 class RecoveryWidget:
@@ -19,7 +21,8 @@ class RecoveryWidget:
         self.header_widget = HeaderWidget(top_frame,
                                           currencies=self.currencies,
                                           on_currency_selected=self.recovery_controller.on_currency_selected,
-                                          on_refreshed=self.recovery_controller.on_refreshed)
+                                          on_refreshed=self.recovery_controller.on_refreshed,
+                                          on_saved=self.recovery_controller.on_saved)
 
         top_frame.pack(fill=tkinter.X)
 
@@ -63,3 +66,10 @@ class RecoveryWidget:
     def release_camera(self):
         print("release recovery camera")
         self.footer_widget.camera_widget.pause()
+
+    @staticmethod
+    def show_success():
+        messagebox.showinfo("Recovery success", "Crypto coins recovered in to files!")
+
+    def set_scanned_count(self, count):
+        self.header_widget.set_scanned_count(count=count)

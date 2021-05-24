@@ -3,6 +3,7 @@ from keygen.crypto_coin_factory import CoinFactory
 import asynctkinter as at
 import pygame
 
+from logic.recovery import save_recovered_coins
 from scan_states.recovery.context import Context
 from scan_states.recovery.state_factory import get_state
 from scan_states.recovery.states_enum import States
@@ -24,18 +25,25 @@ class RecoveryController(Context):
         self.private_key = None
         self.snip = None
 
+        # list of tuples (CryptoCoin, asset_id)
+        self.coins = []
+
     def init(self):
         currencies = CoinFactory.get_available_currencies()
         self.currency = currencies[0]
 
         self.select_currency(self.currency)
 
-
     def on_currency_selected(self, currency):
         self.select_currency(currency)
 
     def on_refreshed(self):
+        self.coins = []
+        self.root.set_scanned_count(len(self.coins))
         self.change_state(States.SCAN_COIN_STATE)
+
+    def on_saved(self):
+        self.start_async(self.save_async())
 
     def select_currency(self, currency):
         self.currency = currency
@@ -115,8 +123,18 @@ class RecoveryController(Context):
     def sleep(self, milliseconds):
         return at.sleep(milliseconds, after=self.window.after)
 
+    def coins_add(self, coin, asset_id):
+        self.coins.append((coin, asset_id))
+        self.root.set_scanned_count(len(self.coins))
+
     @staticmethod
     def _play_song(file_name: str):
         music = pygame.mixer.music
         music.load(file_name)
         music.play()
+
+    async def save_async(self):
+        print("Saving %s of coins", len(self.coins))
+        await self.run_in_thread(lambda: save_recovered_coins(self.coins))
+        print("self.root.show_success()")
+        self.root.show_success()

@@ -1,3 +1,4 @@
+from keygen.crypto_coin import CryptoCoin
 from scan_states.recovery.context import Context
 from scan_states.recovery.scan_state import ScanState
 from scan_states.recovery.states_enum import States
@@ -41,6 +42,7 @@ class ScanCoinState(ScanState):
                 self.context.set_fetched_address(address)
                 self.context.set_fetched_snip(asset_id)
                 self.context.show_coin_info()
+                self.context.coins_add(CryptoCoin(address=address, wif=private_key), asset_id)
                 await self.context.sleep(500)
                 self.change_state(States.APPLY_COIN_STATE)
         else:

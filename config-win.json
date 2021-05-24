@@ -4,6 +4,8 @@
   "private_file_name": "C:\\Users\\laser\\Desktop\\key.txt",
   "public_file_name": "C:\\Users\\laser\\Desktop\\labels.txt",
   "sequence_file_name": "C:\\Users\\laser\\Desktop\\numbers.txt",
+  "recovered_file_name": "C:\\Users\\laser\\Desktop\\recovered.txt",
+  "recovered_keys_file_name": "C:\\Users\\laser\\Desktop\\recovered-keys.txt",
   "lasers": [
     "A",
     "B",
