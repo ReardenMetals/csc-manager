@@ -31,8 +31,8 @@ print("Checking USDT...")
 test_coin("USDT", "Ky1hSHk9RZUBmJU8Nj614Ra81y3xQpmqVohv1NCTQQhD8WzRyTCh", "3Qb5HTPwtCaCT4Zcct3X1tsWeYiHPt3d2J")
 print("Checking BNB...")
 test_coin("BNB",
-          "xprv9s21ZrQH143K2YTzeKHR2Rj8GBC8bNRzjWTxbuCPSFv9HpvAYpHteDnPMXrFuFLnyeft9sjiY3rF4pMuzcnHiy9Ca5DXjXWk3Ybvpv1sdnn",
-          "bnb1nlh2dwvfasx7jlmvq48dvhzd0fdgugs7raz05m")
+          "aa541689331812de852348b0fae3a896bf82ddd709dc75896df345e16c409c8b",
+          "bnb1upfqv7y0hdzvlrznwt83jklsl49lewcclhg9zu")
 print("Checking EOS...")
 test_coin("EOS", "5JyZpiLFnCy7JGn4TEKEFSU6pRwne3vgciJbUq5pT2wzM4bvrBB",
           "EOS6ZsC7LhKtAew7srZ6wUDk2HgzRtDscZVHTAbZiMyDCwdUbXKjq")
