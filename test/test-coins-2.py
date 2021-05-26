@@ -63,12 +63,12 @@ test('DOGE', 'QXArcQ4YdLcxfBkEMucxq1BCfJWUodS7VvNzsEgSSdAt8ioRriey',
      'DLH5B4bx4zJ7ZQvphYi5nVJq6fVTPZoT9g', 'DOGE')
 
 # 9. XRP
-test('XRP', 'xprv9s21ZrQH143K2fNZPozW3tM4yVkkjmwbTzZ65KEfARmiprnNiqm3iQQYU3tPBnSLjJPUdfZR8E7QSz6gmNmZUs8A3KFnZspCD6R2cu6MS1B',
-     'r4Cb1wsjEiP8j54LMhE48JUSZywTWEGh1J', 'XRP')
+test('XRP', 'daf456513aa770d560ab0929a5d31abb81527e88ec1f2ebd7fd6c2947f822db1',
+     'raSs1L8hDhVGkpvqyQyyY9RVjGPHS6eVdf', 'XRP')
 
 # 10. BNB
-test('BNB', 'xprv9s21ZrQH143K2PyH8Tsd3wwiJ5qkjRMzHAf9qdRxVeGhi6yS7pwkcHoZajTX7qk38zSSwP2eUvtAd1quhzYccFqneFMXEAsTSWTHJy958mP',
-     'bnb1f9akltnuwxgs9s9404k5u2frk95wpmy37cvcqq', 'BNB')
+test('BNB', 'aa541689331812de852348b0fae3a896bf82ddd709dc75896df345e16c409c8b',
+     'bnb1upfqv7y0hdzvlrznwt83jklsl49lewcclhg9zu', 'BNB')
 
 # 11. XMR
 test('XMR', '876604d806600496bc05b8b594c9eee5bdfdc97bc8e599096d7bf73be982b20f',
