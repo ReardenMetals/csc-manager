@@ -7,7 +7,7 @@ import pygame
 def main():
     tk = tkinter.Tk()
     pygame.mixer.init()
-    App("CSC Manager 1.1.0", tk)
+    App("CSC Manager 1.2.0", tk)
     tk.mainloop()
 
 
