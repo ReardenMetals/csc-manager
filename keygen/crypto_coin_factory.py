@@ -27,7 +27,7 @@ class CoinFactory:
     @staticmethod
     def get_default_available_currencies():
         return ['BTC', 'BCH', 'CLUB', 'DASH', 'LTC', 'ETH', 'BSV', 'DOGE', 'XRP', 'XMR', 'BNB', 'EOS', 'POTE', 'WAVES',
-                'USDT']  # TODO ADD 'ADA'
+                'USDT', 'ADA']
 
     @staticmethod
     def get_coin_service(currency):

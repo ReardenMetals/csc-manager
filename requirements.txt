@@ -77,3 +77,8 @@ sha256==0.1
 two1==3.10.9
 varint==1.0.2
 whatsonchain==0.0.3
+
+mnemonic==0.19
+cbor==1.0.0
+scrypt==0.8.18
+ed25519==1.5
