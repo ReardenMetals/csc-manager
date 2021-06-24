@@ -12,7 +12,7 @@ Python-3.8.6 download link: https://www.python.org/downloads/release/python-386/
 
 Install needed dependencies:
 
-    pip pip install -r requirements.txt
+    pip install -r requirements.txt
     
 Change application config ("config.json" in root folder) to your file pathes:
     
@@ -115,4 +115,3 @@ If you'd like to donate something:
 
 Thank you very much in advance for your support.
 
-# License
